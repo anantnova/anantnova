@@ -84,6 +84,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
+  // 2b. Smooth Scroll with Dynamic Header Offset
+  // Ensures #problem, #capabilities start cleanly at top
+  // ==========================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#' || targetId === '#!') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const headerEl = document.querySelector('.site-header');
+        const headerHeight = headerEl ? headerEl.offsetHeight : 76;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = Math.max(0, targetPosition - headerHeight - 14);
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+          closeMobileNav();
+        }
+
+        if (history.pushState) {
+          history.pushState(null, '', targetId);
+        }
+      }
+    });
+  });
+
+  // ==========================================
   // 3. The Business Journey Data & Stepper
   // ==========================================
   const journeyStages = {
