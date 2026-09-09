@@ -4,8 +4,10 @@
  * Interactive Scope & Roadmap Estimator, FAQ Accordion, and Strategy Inquiry Modal.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
   'use strict';
+
+  function initApp() {
 
   // ==========================================
   // 1. Sticky Glass Header Scroll Effect
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
 
       // Condensed floating capsule style once scrolled past notice bar
       if (currentScrollY > 35) {
@@ -30,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Hide navbar when actively scrolling down past initial threshold
-      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      if (delta > 6 && currentScrollY > 80) {
         siteHeader.classList.add('nav-hidden');
-      } else if (currentScrollY < lastScrollY || currentScrollY <= 35) {
-        // Immediately reveal when scrolling up or at page top
+      } else if (delta < 0 || currentScrollY <= 40) {
+        // Immediately reveal when scrolling up or near page top
         siteHeader.classList.remove('nav-hidden');
       }
 
@@ -43,7 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(scrollStopTimer);
       scrollStopTimer = setTimeout(() => {
         siteHeader.classList.remove('nav-hidden');
-      }, 220);
+      }, 120);
+    }, { passive: true });
+
+    // Instantaneous stop-reveal when scroll motion completes
+    window.addEventListener('scrollend', () => {
+      siteHeader.classList.remove('nav-hidden');
     }, { passive: true });
   }
 
@@ -398,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const phase = item.getAttribute('data-phase');
       const layer = item.getAttribute('data-layer');
       const score = parseInt(item.getAttribute('data-score') || '1', 10);
-      
+
       if (phase) selectedPhases.add(phase);
       if (layer) selectedLayers.add(layer);
       totalScore += score;
@@ -542,4 +550,90 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1200);
     });
   }
-});
+
+  // ==========================================
+  // 8. Scroll-Triggered Reveal Engine (Fade In / Up / Stagger)
+  // ==========================================
+  const revealElements = document.querySelectorAll('[data-reveal]');
+  if (revealElements.length > 0 && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+  }
+
+  // ==========================================
+  // 9. Glass Card Spotlight Sheen (Cursor Microinteraction)
+  // ==========================================
+  const glassCards = document.querySelectorAll('.glass-card-sheen, .layer-card, .comp-card, .capability-card, .labs-item-card');
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive: true });
+  });
+
+  // ==========================================
+  // 10. Subtle Floating Microinteractions
+  // ==========================================
+  const parallaxFloating = document.querySelectorAll('.hero-badge-wrap .pill-badge');
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        if (scrolled < 900) {
+          parallaxFloating.forEach((target) => {
+            target.style.transform = `translateY(${scrolled * 0.04}px)`;
+          });
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ==========================================
+  // 11. Smooth Page Transitions
+  // ==========================================
+  const internalPageLinks = document.querySelectorAll('a[href$=".html"]');
+  internalPageLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetUrl = link.getAttribute('href');
+      if (!targetUrl || targetUrl.startsWith('#') || link.target === '_blank' || e.metaKey || e.ctrlKey) {
+        return;
+      }
+
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      if (targetUrl === currentPath) return;
+
+      e.preventDefault();
+      document.body.classList.add('page-transitioning');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 220);
+    });
+  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+})();

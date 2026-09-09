@@ -35,7 +35,7 @@
   <link rel="icon" type="image/png" href="logo/favicon.svg">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.0">
 
   <!-- Comprehensive Schema.org JSON-LD for SEO & AEO (Answer Engine Optimization) -->
   <script type="application/ld+json">
@@ -122,6 +122,12 @@
 
 <body>
 
+  <!-- Master Ambient Generative 3D Light Fluid WebGL Canvas -->
+  <div class="global-canvas-wrapper" aria-hidden="true">
+    <canvas id="ambient-canvas"></canvas>
+    <div class="global-canvas-overlay"></div>
+  </div>
+
   <!-- Top Announcement Bar -->
   <div class="top-notice-bar">
     <span class="pulse-pill">LAUNCHING 7 OCTOBER 2026</span>
@@ -206,35 +212,29 @@
          HERO SECTION: Generative 3D Light Fluid WebGL
          ========================================== -->
     <section class="hero-section" id="hero">
-      <!-- WebGL Interactive Canvas -->
-      <div class="hero-canvas-wrapper">
-        <canvas id="hero-canvas" aria-label="Interactive generative 3D light ribbons background"></canvas>
-      </div>
-      <div class="hero-gradient-overlay"></div>
-
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge-wrap">
+          <div class="hero-badge-wrap" data-reveal="fade-up">
             <div class="pill-badge">
               <span class="dot"></span>
               <span>Your Complete Business & Technology Partner</span>
             </div>
           </div>
 
-          <h1 class="heading-xl hero-title">
+          <h1 class="heading-xl hero-title" data-reveal="fade-up" data-delay="1">
             One Ecosystem.<br>
             <span class="italic-accent">Everything You Need</span><br>
             to Start, Build &amp; Grow.
           </h1>
 
-          <p class="hero-description">
+          <p class="hero-description" data-reveal="fade-up" data-delay="2">
             Starting or growing a business can mean dealing with too many different people and vendors. Anant Nova
             brings it all together in one place — from business setup, branding, technology and AI to marketing,
             printing, packaging and trusted business partners. You have one point of contact, and we help make
             everything happen.
           </p>
 
-          <div class="hero-cta-group">
+          <div class="hero-cta-group" data-reveal="fade-up" data-delay="3">
             <button class="btn btn-nova open-inquiry-modal" data-topic="Hero CTA — Start Project">
               <span>Start Your Project</span>
               <div class="btn-icon-circle">→</div>
@@ -245,7 +245,7 @@
           </div>
 
           <!-- Trust Metrics Bar -->
-          <div class="hero-trust-metrics">
+          <div class="hero-trust-metrics" data-reveal="fade-up" data-delay="4">
             <div class="metric-item">
               <span class="metric-val">1</span>
               <span class="metric-label">Point of Contact</span>
@@ -268,7 +268,7 @@
          ========================================== -->
     <section class="section" id="problem">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fade-up">
           <span class="section-subtitle">THE PARADIGM SHIFT</span>
           <h2 class="heading-lg section-title">Why Traditional Business Execution is Broken</h2>
           <p class="section-desc">
@@ -279,7 +279,7 @@
 
         <div class="comparison-grid">
           <!-- Traditional Fragmentation -->
-          <div class="comp-card traditional">
+          <div class="comp-card traditional glass-card-sheen" data-reveal="fade-up" data-delay="1">
             <div class="comp-card-badge">THE FRAGMENTATION TRAP</div>
             <h3 class="comp-heading">The Disjointed Multi-Vendor Nightmare</h3>
             <p class="comp-text">
@@ -309,7 +309,7 @@
           </div>
 
           <!-- The Anant Nova Solution -->
-          <div class="comp-card nova">
+          <div class="comp-card nova glass-card-sheen" data-reveal="fade-up" data-delay="2">
             <div class="comp-card-badge">THE ANANT NOVA MODEL</div>
             <h3 class="comp-heading">One Business. One Ecosystem. Zero Friction.</h3>
             <p class="comp-text">
@@ -344,9 +344,9 @@
     <!-- ==========================================
          SECTION 2: The 3 Ecosystem Layers
          ========================================== -->
-    <section class="section" id="layers" style="background: #FFFFFF;">
+    <section class="section" id="layers">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fade-up">
           <span class="section-subtitle">OUR ARCHITECTURE</span>
           <h2 class="heading-lg section-title">How The Ecosystem Operates</h2>
           <p class="section-desc">
@@ -357,7 +357,7 @@
 
         <div class="layers-grid">
           <!-- Layer 1 -->
-          <div class="layer-card featured">
+          <div class="layer-card featured glass-card-sheen" data-reveal="fade-up" data-delay="1">
             <div class="featured-ribbon">Core Engine</div>
             <span class="layer-tag">LAYER 01</span>
             <h3 class="layer-title">Anant Nova Core</h3>
@@ -378,7 +378,7 @@
           </div>
 
           <!-- Layer 2 -->
-          <div class="layer-card">
+          <div class="layer-card glass-card-sheen" data-reveal="fade-up" data-delay="2">
             <span class="layer-tag">LAYER 02</span>
             <h3 class="layer-title">Anant Nova Network</h3>
             <div class="layer-role">Vetted Partner Coordinated Delivery</div>
@@ -398,7 +398,7 @@
           </div>
 
           <!-- Layer 3 -->
-          <div class="layer-card">
+          <div class="layer-card glass-card-sheen" data-reveal="fade-up" data-delay="3">
             <span class="layer-tag">LAYER 03</span>
             <h3 class="layer-title">Anant Nova Connect</h3>
             <div class="layer-role">Strategic Business Bridges</div>
@@ -524,9 +524,9 @@
     <!-- ==========================================
          SECTION 4: Master Capabilities Matrix (Filterable)
          ========================================== -->
-    <section class="section" id="capabilities" style="background: #FFFFFF;">
+    <section class="section" id="capabilities">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fade-up">
           <span class="section-subtitle">CAPABILITIES DIRECTORY</span>
           <h2 class="heading-lg section-title">Comprehensive Service Ecosystem</h2>
           <p class="section-desc">
@@ -846,9 +846,9 @@
     <!-- ==========================================
          SECTION 7: Core Principles & Quality Standards
          ========================================== -->
-    <section class="section" id="principles" style="background: #FFFFFF;">
+    <section class="section" id="principles">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header" data-reveal="fade-up">
           <span class="section-subtitle">THE ANANT NOVA CREED</span>
           <h2 class="heading-lg section-title">Six Non-Negotiable Principles</h2>
           <p class="section-desc">
@@ -1173,8 +1173,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="assets/js/hero-shader.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/hero-shader.js?v=4.0"></script>
+  <script src="assets/js/main.js?v=4.0"></script>
 </body>
 
 </html>

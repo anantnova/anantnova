@@ -1,16 +1,19 @@
 /**
- * Anant Nova — Generative 3D Light Fluid WebGL Shader
+ * Anant Nova — Master Ambient Generative 3D Light Fluid WebGL Shader
  * Aesthetic: Apple-grade Minimalist Light Field, Illuminated Silk / Fluid Ribbons
  * Palette: 60% Sage Green (from Primary Logo), Ocean Blue refractions, Luxury Ivory canvas, and Nova Orange warmth
+ * Capabilities: Full-viewport fixed ambient background with scroll-driven scrollytelling parallax,
+ * mouse responsiveness, and silky smooth 60fps performance across the entire web page.
  */
 
 (function () {
   'use strict';
 
-  const canvas = document.getElementById('hero-canvas');
+  const canvas = document.getElementById('ambient-canvas') || document.getElementById('hero-canvas');
   if (!canvas) return;
 
-  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  const gl = canvas.getContext('webgl', { powerPreference: 'high-performance', alpha: true }) ||
+    canvas.getContext('experimental-webgl', { alpha: true });
   if (!gl) {
     console.warn('WebGL not supported, falling back to CSS background.');
     return;
@@ -26,7 +29,7 @@
     }
   `;
 
-  // Precision fragment shader generating smooth 3D illuminated ribbons with soft bloom
+  // Precision fragment shader generating smooth full-viewport 3D illuminated ribbons with soft bloom & scroll parallax
   const fragmentShaderSource = `
     precision highp float;
 
@@ -34,6 +37,7 @@
     uniform vec2 u_resolution;
     uniform float u_time;
     uniform vec2 u_mouse;
+    uniform float u_scroll;
 
     // 2D Rotation matrix
     mat2 rotate2D(float angle) {
@@ -46,87 +50,83 @@
       // Normalized coordinates keeping aspect ratio
       vec2 st = (gl_FragCoord.xy * 2.0 - u_resolution) / min(u_resolution.x, u_resolution.y);
       
-      // Subtle mouse parallax influence
-      vec2 mouseInfluence = (u_mouse - 0.5) * 0.35;
-      st += mouseInfluence * 0.15;
+      // Interactive cursor parallax
+      vec2 mouseInfluence = (u_mouse - 0.5) * 0.25;
+      st += mouseInfluence * 0.12;
 
       // Slow meditative time scale
-      float t = u_time * 0.32;
+      float t = u_time * 0.20;
 
-      // Rotate st diagonally (~38 degrees) matching the reference video
-      st = rotate2D(-0.65) * st;
+      // Continuous scroll progression across all sections
+      float scrollPhase = u_scroll * 4.5;
 
-      // Base canvas color: Luxury Ivory
-      vec3 bgColor = vec3(0.980, 0.973, 0.960); // #FAF8F5
-      
-      // Subtle ambient vignette in the background
-      float bgVignette = length(st * 0.35);
-      vec3 color = mix(bgColor, vec3(0.945, 0.938, 0.920), smoothstep(0.0, 1.5, bgVignette));
+      // Base canvas: Luxury Ivory (#FAF8F5) with living ambient fluid warmth (never plain white!)
+      vec3 ivoryBg = vec3(0.978, 0.970, 0.958);
+      float ambientMotion = sin(st.x * 0.7 + t * 0.25 + scrollPhase * 0.4) * cos(st.y * 0.7 - t * 0.2);
+      vec3 col = mix(ivoryBg, vec3(0.940, 0.955, 0.942), ambientMotion * 0.25 + 0.20);
 
-      // Coordinate distortion for organic liquid/fabric folding
-      vec2 uvFold = st;
-      uvFold.x += sin(uvFold.y * 1.8 + t * 0.8) * 0.32;
-      uvFold.y += cos(uvFold.x * 1.4 + t * 0.6) * 0.28;
+      // Elegant 32-degree diagonal rotation
+      st = rotate2D(-0.55) * st;
 
-      // Multi-layer ribbon accumulation
-      float glowAccum = 0.0;
-      float ribbonCore = 0.0;
-
-      for (float i = 0.0; i < 4.0; i += 1.0) {
-        float offset = i * 0.42;
-        
-        // Fluid wave formula with breathing frequency
-        float wave = sin(uvFold.x * (1.6 + i * 0.4) + t * (0.5 + i * 0.15) + offset);
-        wave += cos(uvFold.y * (1.2 + i * 0.3) - t * (0.4 + i * 0.1) + offset) * 0.5;
-        
-        // Distance to ribbon fold center
-        float dist = abs(uvFold.y + wave * 0.35 - (st.x * 0.25) - (offset * 0.5 - 0.5));
-        
-        // Exponential bloom falloff (eliminates all hard edges)
-        float glow = exp(-dist * dist * (4.5 + i * 1.2));
-        glowAccum += glow * (0.35 / (1.0 + i * 0.2));
-
-        // Core intensity
-        ribbonCore += exp(-dist * 18.0) * 0.15;
-      }
-
-      // Breathing brightness pulsation
-      float breath = sin(t * 0.7) * 0.08 + 1.0;
-      glowAccum *= breath;
-
-      // --- Color Definition (60% Sage Green, Ocean Blue, Luxury Ivory & Nova Orange) ---
-      vec3 sageDeep     = vec3(0.125, 0.290, 0.243); // #204A3E (Deep forest sage)
+      // Brand color palette (60% Sage Green, Ocean Blue, Luxury Ivory, Nova Orange)
+      vec3 sageDeep     = vec3(0.125, 0.290, 0.243); // #204A3E (Deep forest shadow)
       vec3 sagePrimary  = vec3(0.247, 0.435, 0.369); // #3F6F5E (Primary Sage Green from Logo)
       vec3 sageLight    = vec3(0.655, 0.722, 0.624); // #A7B89F (Pale Sage Sheen)
-      vec3 luxuryIvory  = vec3(0.988, 0.980, 0.965); // #FAF8F5 (Luxury Ivory)
       vec3 oceanBlue    = vec3(0.259, 0.620, 0.741); // #429EBD (Ocean Blue)
-      vec3 oceanIce     = vec3(0.624, 0.906, 0.961); // #9FE7F5 (Ocean Ice)
-      vec3 novaOrange   = vec3(0.949, 0.498, 0.047); // #F27F0C (Nova Orange)
+      vec3 oceanIce     = vec3(0.624, 0.906, 0.961); // #9FE7F5 (Ocean Ice highlight)
+      vec3 novaOrange   = vec3(0.949, 0.498, 0.047); // #F27F0C (Nova Orange warmth)
 
-      // Gradient along the flowing ribbon: Sage Primary to Sage Light
-      float colorRamp = smoothstep(-1.2, 1.2, uvFold.x + sin(t * 0.4) * 0.5);
-      vec3 ribbonColor = mix(sagePrimary, sageLight, colorRamp);
-      
-      // Blend in Luxury Ivory highlights on high-intensity peaks
-      ribbonColor = mix(ribbonColor, luxuryIvory, smoothstep(0.4, 0.85, glowAccum));
+      // 5 broad, voluptuous 3D illuminated silk ribbons spanning the entire viewport
+      for (float i = 0.0; i < 5.0; i += 1.0) {
+        float vPos = (i - 2.0) * 0.55; // Spans vertical range -1.1 to +1.1
+        
+        // Fluid harmonic wave formula
+        float wave = sin(st.x * 1.25 + t * (0.35 + i * 0.05) + scrollPhase * 0.5 + i * 1.1) * 0.36;
+        wave += cos(st.x * 0.75 - t * 0.22 - scrollPhase * 0.3 + i * 1.6) * 0.22;
+        
+        // Dynamic fold distortion
+        float fold = sin(st.y * 1.6 + t * 0.3 + i * 0.8) * 0.14;
+        
+        // Distance to ribbon fold center
+        float ribbonY = vPos + wave + fold;
+        float dist = abs(st.y - ribbonY);
+        
+        // Broad silk ribbon body with soft falloff
+        float ribbonAlpha = smoothstep(0.40, 0.02, dist);
+        
+        if (ribbonAlpha > 0.005) {
+          // Color progression along the wave (predominantly 60% Primary Sage Green)
+          float colorProg = sin(st.x * 0.9 + t * 0.25 + scrollPhase + i * 1.3) * 0.5 + 0.5;
+          vec3 baseRibbon = mix(sagePrimary, sageLight, colorProg);
+          
+          // Deepen lower fold edge to create real 3D depth and shadow
+          float shadowFold = smoothstep(0.0, 0.35, (st.y - ribbonY));
+          baseRibbon = mix(sageDeep, baseRibbon, shadowFold * 0.8 + 0.2);
+          
+          // Layer-specific accent reflections: Ocean Blue and Nova Orange
+          if (i == 1.0 || i == 3.0) {
+            float blueRim = smoothstep(0.12, 0.30, dist) * (1.0 - smoothstep(0.30, 0.40, dist));
+            baseRibbon = mix(baseRibbon, oceanBlue, blueRim * 0.65);
+          } else if (i == 0.0 || i == 4.0) {
+            float orangeGlow = max(0.0, sin(t * 0.6 + st.x * 1.8 + i)) * 0.38;
+            baseRibbon = mix(baseRibbon, novaOrange, orangeGlow);
+          } else {
+            // Central ribbon: soft ocean ice sheen
+            float iceSheen = smoothstep(0.02, 0.12, dist) * (1.0 - smoothstep(0.12, 0.25, dist));
+            baseRibbon = mix(baseRibbon, oceanIce, iceSheen * 0.35);
+          }
+          
+          // Silky 3D specular highlight along fold ridge
+          float specular = exp(-dist * dist * 32.0) * 0.40;
+          baseRibbon += vec3(0.98, 0.98, 0.95) * specular;
+          
+          // Soft luminous blend into canvas (gives translucent, illuminated silk look)
+          col = mix(col, baseRibbon, ribbonAlpha * 0.60);
+        }
+      }
 
-      // Iridescent chromatic edge rim in Ocean Blue / Ice
-      float rim = smoothstep(0.18, 0.65, glowAccum) * (1.0 - smoothstep(0.65, 1.0, glowAccum));
-      ribbonColor = mix(ribbonColor, oceanBlue, rim * 0.40);
-      ribbonColor = mix(ribbonColor, oceanIce, rim * 0.20);
-
-      // Warm Nova Orange internal refraction spark
-      float orangeSpark = smoothstep(0.65, 0.95, glowAccum) * max(0.0, sin(t * 0.8 + uvFold.y * 2.5));
-      ribbonColor = mix(ribbonColor, novaOrange, clamp(orangeSpark * 0.35, 0.0, 1.0));
-
-      // Multiply-screen blend over Luxury Ivory canvas
-      vec3 litResult = mix(color, ribbonColor, clamp(glowAccum * 0.88, 0.0, 1.0));
-      
-      // Silky sheen highlight in soft Sage/Ivory
-      litResult += luxuryIvory * ribbonCore * 0.35;
-
-      // Output with soft tone curve
-      gl_FragColor = vec4(litResult, 1.0);
+      // Output final illuminated canvas
+      gl_FragColor = vec4(col, 1.0);
     }
   `;
 
@@ -165,11 +165,11 @@
     gl.ARRAY_BUFFER,
     new Float32Array([
       -1.0, -1.0,
-       1.0, -1.0,
-      -1.0,  1.0,
-      -1.0,  1.0,
-       1.0, -1.0,
-       1.0,  1.0,
+      1.0, -1.0,
+      -1.0, 1.0,
+      -1.0, 1.0,
+      1.0, -1.0,
+      1.0, 1.0,
     ]),
     gl.STATIC_DRAW
   );
@@ -182,6 +182,7 @@
   const uResolutionLocation = gl.getUniformLocation(program, 'u_resolution');
   const uTimeLocation = gl.getUniformLocation(program, 'u_time');
   const uMouseLocation = gl.getUniformLocation(program, 'u_mouse');
+  const uScrollLocation = gl.getUniformLocation(program, 'u_scroll');
 
   let mouseX = 0.5;
   let mouseY = 0.5;
@@ -191,13 +192,25 @@
   window.addEventListener('mousemove', (e) => {
     targetMouseX = e.clientX / window.innerWidth;
     targetMouseY = 1.0 - (e.clientY / window.innerHeight);
-  });
+  }, { passive: true });
 
-  // Resize handler
+  // Scroll tracking for scrollytelling parallax
+  let currentScroll = 0.0;
+  let targetScroll = 0.0;
+
+  function updateScrollProgress() {
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    targetScroll = Math.min(Math.max(window.scrollY / maxScroll, 0.0), 1.0);
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  updateScrollProgress();
+
+  // Resize handler for full-viewport canvas
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    const displayWidth = Math.floor(canvas.clientWidth * dpr);
-    const displayHeight = Math.floor(canvas.clientHeight * dpr);
+    const displayWidth = Math.floor((canvas.clientWidth || window.innerWidth) * dpr);
+    const displayHeight = Math.floor((canvas.clientHeight || window.innerHeight) * dpr);
 
     if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
       canvas.width = displayWidth;
@@ -206,21 +219,12 @@
     }
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  // Animation Loop with Performance Throttling
+  // Animation Loop with Visibility Control & 60fps smoothing
   let startTime = performance.now();
   let isVisible = true;
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        isVisible = entry.isIntersecting;
-      });
-    }, { threshold: 0.05 });
-    observer.observe(canvas);
-  }
 
   document.addEventListener('visibilitychange', () => {
     isVisible = !document.hidden;
@@ -228,14 +232,17 @@
 
   function render(now) {
     if (isVisible) {
+      // Smooth interpolation for mouse and scroll uniforms
       mouseX += (targetMouseX - mouseX) * 0.05;
       mouseY += (targetMouseY - mouseY) * 0.05;
+      currentScroll += (targetScroll - currentScroll) * 0.06;
 
       const elapsedTime = (now - startTime) * 0.001;
 
       gl.uniform2f(uResolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(uTimeLocation, elapsedTime);
       gl.uniform2f(uMouseLocation, mouseX, mouseY);
+      gl.uniform1f(uScrollLocation, currentScroll);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     }
