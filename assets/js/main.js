@@ -9,15 +9,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
   // 1. Sticky Glass Header Scroll Effect
+  //    - Sticks across the page
+  //    - Hides up smoothly when actively scrolling down
+  //    - Re-emerges smoothly when scrolling stops or on scroll up
+  //    - Condenses style when scrolled past announcement bar
   // ==========================================
   const siteHeader = document.querySelector('.site-header');
   if (siteHeader) {
+    let lastScrollY = window.scrollY;
+    let scrollStopTimer = null;
+
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
+      const currentScrollY = window.scrollY;
+
+      // Condensed floating capsule style once scrolled past notice bar
+      if (currentScrollY > 35) {
         siteHeader.classList.add('scrolled');
       } else {
         siteHeader.classList.remove('scrolled');
       }
+
+      // Hide navbar when actively scrolling down past initial threshold
+      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+        siteHeader.classList.add('nav-hidden');
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 35) {
+        // Immediately reveal when scrolling up or at page top
+        siteHeader.classList.remove('nav-hidden');
+      }
+
+      lastScrollY = currentScrollY;
+
+      // Reveal navbar with smooth slide-down animation when user stops scrolling
+      clearTimeout(scrollStopTimer);
+      scrollStopTimer = setTimeout(() => {
+        siteHeader.classList.remove('nav-hidden');
+      }, 220);
     }, { passive: true });
   }
 
