@@ -2241,6 +2241,62 @@ body.page-transitioning {
   box-shadow: 0 0 0 3px rgba(63, 111, 94, 0.15);
 }
 
+/* --- Subpage Layout & Card Components (Services, Our Work, Team, Contact) --- */
+.subpage-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--notice-bar-height, 38px) + var(--nav-height, 64px) + 2.5rem) 1rem 5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.subpage-card {
+  padding: clamp(2.5rem, 5vw, 4rem);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  width: 100%;
+}
+
+.subpage-desc {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+
+.subpage-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-section {
+  padding: calc(var(--notice-bar-height, 38px) + var(--nav-height, 64px) + 2rem) 1rem 6.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--glass-shadow);
+}
+
 /* ==========================================================================
    RESPONSIVE OPTIMIZATION & DEVICE ERGONOMICS
    Covers: Large Desktops, Tablets, Phablets, and Small Mobile Screens
@@ -2560,6 +2616,104 @@ body.page-transitioning {
     text-align: center;
     align-items: center;
   }
+
+  /* --- Subpages Mobile Optimization (Services, Our Work, Team, Contact) --- */
+  .subpage-hero {
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: calc(var(--nav-height, 52px) + var(--notice-bar-height, 56px) + 1.25rem);
+    padding-bottom: 3.5rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .subpage-card {
+    padding: 1.75rem 1.15rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .subpage-card .pill-badge {
+    margin-bottom: 1rem !important;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.65rem;
+  }
+
+  .subpage-card .heading-xl {
+    font-size: clamp(1.4rem, 5.8vw, 1.85rem);
+    line-height: 1.2;
+    margin-bottom: 1rem !important;
+  }
+
+  .subpage-desc {
+    font-size: clamp(0.9rem, 3.6vw, 0.98rem);
+    line-height: 1.6;
+    margin-bottom: 1.75rem !important;
+    padding: 0 0.2rem;
+  }
+
+  .subpage-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .subpage-actions .btn {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.88rem;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .contact-section {
+    padding-top: calc(var(--nav-height, 52px) + var(--notice-bar-height, 56px) + 1.25rem);
+    padding-bottom: 3.5rem;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .contact-section .section-header {
+    margin-bottom: 1.85rem !important;
+  }
+
+  .contact-section .section-header .heading-xl {
+    font-size: clamp(1.45rem, 6vw, 2rem);
+  }
+
+  .contact-section .section-header .section-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    padding: 0 0.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-card {
+    padding: 1.6rem 1.15rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .contact-card h2 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .contact-card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .contact-card .btn {
+    width: 100%;
+    min-height: 46px;
+    font-size: 0.9rem;
+    justify-content: center;
+  }
 }
 
 /* --- Ultra-Small Mobile Phones (<= 380px) --- */
@@ -2618,5 +2772,23 @@ body.page-transitioning {
   .hero-badge-wrap .pill-badge {
     font-size: 0.58rem;
     padding: 0.25rem 0.45rem;
+  }
+
+  .subpage-hero,
+  .contact-section {
+    padding-top: calc(var(--nav-height, 52px) + var(--notice-bar-height, 60px) + 1rem);
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
+  .subpage-card,
+  .contact-card {
+    padding: 1.35rem 0.85rem;
+  }
+
+  .subpage-actions .btn {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.85rem;
+    min-height: 42px;
   }
 }
