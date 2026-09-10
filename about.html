@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Anant Nova | The Unified Business &amp; Technology Ecosystem</title>
+  <meta name="description" content="Discover Anant Nova — Infinite Possibilities. New Realities. Learn how our unified 3-tier ecosystem bridges the gap between vision, engineering, and scaling.">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.3">
+</head>
+<body>
+  <!-- Master Ambient Generative 3D Light Fluid WebGL Canvas -->
+  <div class="global-canvas-wrapper" aria-hidden="true">
+    <canvas id="ambient-canvas"></canvas>
+    <div class="global-canvas-overlay"></div>
+  </div>
+
+  <!-- Top Notice Bar -->
+  <div class="top-notice-bar">
+    <span class="pulse-pill">LAUNCHING 7 OCTOBER 2026</span>
+    <span>Everything you need to build your business, all in one place</span>
+  </div>
+
+  <!-- Master Floating Header (Glassmorphic Capsule) -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <nav class="nav-container" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo" title="Anant Nova Home">
+          <img src="logo/favicon.svg" alt="Anant Nova Primary Logo" class="logo-img" width="38" height="38">
+          <div class="brand-name">
+            <span>ANANT NOVA</span>
+            <span class="brand-tagline">Beyond Ideas. Built for You</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link" style="color: var(--accent-sage-dark); font-weight: 700;">About Us</a></li>
+          <li><a href="index.html#problem" class="nav-link">Problem &amp; Solutions</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="index.html#capabilities" class="nav-link">Capabilities</a></li>
+          <li><a href="our-work.html" class="nav-link">Our Work</a></li>
+          <li><a href="team.html" class="nav-link">Team</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="contact.html" class="nav-contact-btn">Contact</a>
+          <button class="btn btn-primary open-inquiry-modal" data-topic="About Us — Strategic Discussion">
+            <span>Start a Project</span>
+            <div class="btn-icon-circle">→</div>
+          </button>
+          <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" id="mobile-toggle-btn">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Backdrop Overlay & Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-overlay" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <img src="logo/favicon.svg" alt="Anant Nova Logo" class="logo-img" width="34" height="34">
+        <div class="brand-name">
+          <span>ANANT NOVA</span>
+          <span class="brand-tagline">Beyond Ideas. Built for You</span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close navigation menu">✕</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html#hero"><span>Home</span> <span class="arr">→</span></a></li>
+      <li><a href="about.html" style="color: var(--accent-sage-dark); font-weight: 700;"><span>About Us</span> <span class="arr">→</span></a></li>
+      <li><a href="index.html#problem"><span>Problem &amp; Solutions</span> <span class="arr">→</span></a></li>
+      <li><a href="services.html"><span>Services</span> <span class="arr">→</span></a></li>
+      <li><a href="index.html#capabilities"><span>Capabilities</span> <span class="arr">→</span></a></li>
+      <li><a href="our-work.html"><span>Our Work</span> <span class="arr">→</span></a></li>
+      <li><a href="team.html"><span>Team</span> <span class="arr">→</span></a></li>
+      <li><a href="contact.html"><span>Contact</span> <span class="arr">→</span></a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-primary open-inquiry-modal" style="width: 100%; justify-content: center;" data-topic="Mobile Menu Consultation">
+        <span>Start a Project</span>
+        <div class="btn-icon-circle">→</div>
+      </button>
+      <div class="mobile-drawer-status">
+        <span class="status-dot"></span>
+        <span>LAUNCHING 7 OCTOBER 2026</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <main>
+    <!-- ==========================================
+         SECTION 1: HERO & THE DUAL IDENTITY
+         ========================================== -->
+    <section class="about-hero" id="about-hero">
+      <div class="container" style="max-width: 1080px; position: relative; z-index: 10;">
+        <div class="text-center" data-reveal>
+          <div class="hero-badge-wrap">
+            <div class="pill-badge sage">
+              <span class="dot"></span>
+              <span>WHO WE ARE &amp; WHY WE EXIST</span>
+            </div>
+          </div>
+          <h1 class="heading-xl hero-title" style="margin-top: 0.5rem; margin-bottom: 1.25rem;">
+            The Infinite Emergence.<br>
+            <span class="italic-accent">New Realities.</span>
+          </h1>
+          <p class="hero-description" style="max-width: 780px; margin-left: auto; margin-right: auto;">
+            Most ambitious ventures don't fail from a lack of vision. They stumble in the <em>fragmentation trap</em> — managing ten disconnected vendors with misaligned roadmaps. Anant Nova was engineered as a single, coordinated ecosystem where technology, brand, and strategy move in sync.
+          </p>
+        </div>
+
+        <!-- The Meaning of Anant Nova Cards -->
+        <div class="about-meaning-grid" data-reveal>
+          <!-- Card: Anant -->
+          <div class="meaning-card">
+            <div class="meaning-header">
+              <div>
+                <span class="meaning-origin">SANSKRIT • अनन्त</span>
+                <h3 class="meaning-term">ANANT</h3>
+              </div>
+              <div class="meaning-badge">The Infinite</div>
+            </div>
+            <p class="meaning-summary">
+              Boundless capacity, infinite potential, and non-stop iteration. It represents our conviction that visionary businesses should never be constrained by technical ceilings, operational bottlenecks, or geographical limits.
+            </p>
+            <div class="meaning-traits">
+              <span class="meaning-tag">Uncapped Scale</span>
+              <span class="meaning-tag">Endless Curiosity</span>
+              <span class="meaning-tag">Compounding Momentum</span>
+            </div>
+          </div>
+
+          <!-- Card: Nova -->
+          <div class="meaning-card">
+            <div class="meaning-header">
+              <div>
+                <span class="meaning-origin">LATIN • NOVUS</span>
+                <h3 class="meaning-term">NOVA</h3>
+              </div>
+              <div class="meaning-badge nova">A New Star</div>
+            </div>
+            <p class="meaning-summary">
+              A sudden, brilliant emergence that reshapes its surroundings. It embodies the ignition of an idea into sharp, tangible reality — turning conceptual strategy into production-grade software, physical products, and market traction.
+            </p>
+            <div class="meaning-traits">
+              <span class="meaning-tag">Sharp Ignition</span>
+              <span class="meaning-tag">Tangible Artifacts</span>
+              <span class="meaning-tag">Market Velocity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tagline Banner -->
+        <div class="text-center" style="margin-top: 2.5rem;" data-reveal>
+          <div style="display: inline-flex; align-items: center; gap: 0.75rem; background: rgba(255, 255, 255, 0.8); border: 1px solid var(--glass-border); padding: 0.6rem 1.4rem; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); backdrop-filter: blur(8px);">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-sage-deep); text-transform: uppercase; letter-spacing: 0.08em;">Core Credo</span>
+            <span style="width: 4px; height: 4px; background: var(--accent-amber); border-radius: 50%;"></span>
+            <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--text-primary);">"Infinite Possibilities. New Realities."</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: THE PROBLEM & THE ECOSYSTEM SOLUTION
+         ========================================== -->
+    <section class="section-py" id="problem-solution">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-header text-center" data-reveal>
+          <div class="pill-badge amber" style="margin-bottom: 0.85rem;">
+            <span class="dot"></span>
+            <span>WHY WE WERE BUILT</span>
+          </div>
+          <h2 class="heading-lg" style="margin-bottom: 0.85rem;">The Fragmentation Trap vs. Unified Execution</h2>
+          <p class="section-desc" style="max-width: 720px; margin-left: auto; margin-right: auto;">
+            Building modern businesses traditionally requires juggling disconnected agencies. We replace chaos with a unified operating system.
+          </p>
+        </div>
+
+        <div class="comparison-grid" data-reveal>
+          <!-- Left: Traditional Fragmentation -->
+          <div class="comparison-card card-traditional">
+            <div class="comparison-header">
+              <span class="comp-badge bad">THE OLD INDUSTRY MODEL</span>
+              <h3>The Fragmentation Trap</h3>
+              <p>Founders spending 60% of their energy acting as unpaid general contractors between conflicting vendors.</p>
+            </div>
+            <ul class="comparison-points">
+              <li>
+                <div class="point-icon cross">✕</div>
+                <div>
+                  <strong>Disjointed Vendors:</strong> Web agency blames the SEO agency, which blames the developers, which blames the hosting provider.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon cross">✕</div>
+                <div>
+                  <strong>Massive Margin Markups:</strong> Each agency tacks on redundant project management fees and coordination overhead.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon cross">✕</div>
+                <div>
+                  <strong>Architectural Mismatches:</strong> Designs that cannot be built cleanly, or codebases built without legal or compliance review.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon cross">✕</div>
+                <div>
+                  <strong>Months of Inertia:</strong> Every handoff introduces friction, communication silos, and delayed market launch.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Anant Nova Solution -->
+          <div class="comparison-card card-ecosystem">
+            <div class="comparison-header">
+              <span class="comp-badge good">THE ANANT NOVA MODEL</span>
+              <h3>The Unified Ecosystem</h3>
+              <p>One unified executive partnership. You bring the ambition; we orchestrate strategy, code, design, and supply.</p>
+            </div>
+            <ul class="comparison-points">
+              <li>
+                <div class="point-icon check">✓</div>
+                <div>
+                  <strong>Single Accountability Hub:</strong> One executive team overseeing your entire stack from day zero through hyper-scale.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon check">✓</div>
+                <div>
+                  <strong>Synchronized Architecture:</strong> Software, brand identity, AI workflows, and legal compliance built to integrate natively.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon check">✓</div>
+                <div>
+                  <strong>Uncompromising QA Rigor:</strong> Every deliverable vetted through our 8-factor quality framework before production deployment.
+                </div>
+              </li>
+              <li>
+                <div class="point-icon check">✓</div>
+                <div>
+                  <strong>Compounding Speed:</strong> Reusable design systems, pre-engineered infrastructure, and rapid iterative sprints.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: THREE-TIER ARCHITECTURE
+         ========================================== -->
+    <section class="section-py section-glass-band" id="three-tier-architecture">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-header text-center" data-reveal>
+          <div class="pill-badge sage" style="margin-bottom: 0.85rem;">
+            <span class="dot"></span>
+            <span>ECOSYSTEM INFRASTRUCTURE</span>
+          </div>
+          <h2 class="heading-lg" style="margin-bottom: 0.85rem;">Three Coordinated Layers. Zero Gaps.</h2>
+          <p class="section-desc" style="max-width: 720px; margin-left: auto; margin-right: auto;">
+            We don't claim to do everything in a single room. We engineered an interconnected 3-tier architecture to deliver institutional depth across every domain.
+          </p>
+        </div>
+
+        <div class="layers-grid" data-reveal>
+          <!-- Layer 01: Core -->
+          <div class="layer-card">
+            <div class="layer-badge">LAYER 01</div>
+            <h3 class="layer-title">Core In-House Mastery</h3>
+            <p class="layer-desc">
+              Directly executed by Anant Nova's principal engineering, product, and design team. High-stakes initiatives where technical depth and brand alignment are non-negotiable.
+            </p>
+            <div class="layer-capabilities">
+              <span class="cap-tag">Technical Architecture</span>
+              <span class="cap-tag">Custom Web &amp; SaaS</span>
+              <span class="cap-tag">Generative AI Workflows</span>
+              <span class="cap-tag">Brand Identity Systems</span>
+              <span class="cap-tag">Product Strategy</span>
+            </div>
+            <div class="layer-meta" style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--accent-sage-dark); font-weight: 700;">
+              DELIVERY: 100% Direct &amp; Internal
+            </div>
+          </div>
+
+          <!-- Layer 02: Network -->
+          <div class="layer-card" style="border-color: rgba(66, 158, 189, 0.4);">
+            <div class="layer-badge" style="background: rgba(66, 158, 189, 0.15); color: var(--accent-blue);">LAYER 02</div>
+            <h3 class="layer-title">Vetted Specialist Network</h3>
+            <p class="layer-desc">
+              Pre-qualified production studios, packaging manufacturers, print shops, and QA testers managed under Anant Nova contracts, code reviews, and service level agreements.
+            </p>
+            <div class="layer-capabilities">
+              <span class="cap-tag">Physical Print &amp; Packaging</span>
+              <span class="cap-tag">Video &amp; Motion Production</span>
+              <span class="cap-tag">Security Penetration Testing</span>
+              <span class="cap-tag">Specialized Hardware Sourcing</span>
+              <span class="cap-tag">Localization &amp; Media</span>
+            </div>
+            <div class="layer-meta" style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--accent-blue); font-weight: 700;">
+              DELIVERY: Coordinated &amp; Guaranteed
+            </div>
+          </div>
+
+          <!-- Layer 03: Connect -->
+          <div class="layer-card" style="border-color: rgba(242, 127, 12, 0.35);">
+            <div class="layer-badge" style="background: rgba(242, 127, 12, 0.15); color: var(--accent-amber);">LAYER 03</div>
+            <h3 class="layer-title">Strategic Bridges</h3>
+            <p class="layer-desc">
+              Curated partnerships with corporate law firms, CA chartered accountants, venture networks, and enterprise cloud providers with pre-negotiated founder rates and direct oversight.
+            </p>
+            <div class="layer-capabilities">
+              <span class="cap-tag">Company Incorporation &amp; Tax</span>
+              <span class="cap-tag">IP &amp; Trademark Protection</span>
+              <span class="cap-tag">Tier-1 Cloud Credits</span>
+              <span class="cap-tag">Banking &amp; Payment Rails</span>
+              <span class="cap-tag">Investor Intro Channels</span>
+            </div>
+            <div class="layer-meta" style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--accent-amber); font-weight: 700;">
+              DELIVERY: Strategic Introductions &amp; Briefs
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: SIX CORE PRINCIPLES
+         ========================================== -->
+    <section class="section-py" id="core-principles">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-header text-center" data-reveal>
+          <div class="pill-badge sage" style="margin-bottom: 0.85rem;">
+            <span class="dot"></span>
+            <span>OUR OPERATING CODE</span>
+          </div>
+          <h2 class="heading-lg" style="margin-bottom: 0.85rem;">6 Non-Negotiable Principles</h2>
+          <p class="section-desc" style="max-width: 720px; margin-left: auto; margin-right: auto;">
+            How we evaluate technical decisions, architect partner agreements, and interact with every client.
+          </p>
+        </div>
+
+        <div class="principles-grid" data-reveal>
+          <!-- Principle 1 -->
+          <div class="principle-card">
+            <span class="principle-index">01</span>
+            <h3 class="principle-name">Execution Over Ideas</h3>
+            <p class="principle-desc">
+              An idea without disciplined execution is just a hallucination. We prize production releases, working code, and measurable business traction above endless brainstorming decks.
+            </p>
+          </div>
+
+          <!-- Principle 2 -->
+          <div class="principle-card">
+            <span class="principle-index">02</span>
+            <h3 class="principle-name">One Cohesive Ecosystem</h3>
+            <p class="principle-desc">
+              Clients should never spend their weekends acting as project managers bridging incompatible agencies. We take end-to-end ownership of the connective tissue.
+            </p>
+          </div>
+
+          <!-- Principle 3 -->
+          <div class="principle-card">
+            <span class="principle-index">03</span>
+            <h3 class="principle-name">Technology With Purpose</h3>
+            <p class="principle-desc">
+              We never implement hype for novelty's sake. Every AI pipeline, WebGL interaction, and cloud database must tangibly reduce CAC, accelerate delivery, or defend margins.
+            </p>
+          </div>
+
+          <!-- Principle 4 -->
+          <div class="principle-card">
+            <span class="principle-index">04</span>
+            <h3 class="principle-name">Access to Opportunity</h3>
+            <p class="principle-desc">
+              Enterprise-grade software engineering and institutional-tier infrastructure should not be reserved solely for venture-backed unicorns. We democratize elite tools for hungry builders.
+            </p>
+          </div>
+
+          <!-- Principle 5 -->
+          <div class="principle-card">
+            <span class="principle-index">05</span>
+            <h3 class="principle-name">Build to Scale From Day 1</h3>
+            <p class="principle-desc">
+              We engineer modular, battle-tested foundations. Our systems are tailored for day one speed while remaining architected to support day 10,000 without requiring a traumatic rewrite.
+            </p>
+          </div>
+
+          <!-- Principle 6 -->
+          <div class="principle-card">
+            <span class="principle-index">06</span>
+            <h3 class="principle-name">Continuous Evolution</h3>
+            <p class="principle-desc">
+              Technology evolves exponentially. Through Nova Labs, our frontier R&amp;D arm, we continuously stress-test emerging models and tooling so our clients consistently lead their markets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: DELIVERY MODEL & 8-FACTOR QUALITY PRINCIPLE
+         ========================================== -->
+    <section class="section-py section-glass-band" id="delivery-model">
+      <div class="container" style="max-width: 1120px;">
+        <div class="section-header text-center" data-reveal>
+          <div class="pill-badge amber" style="margin-bottom: 0.85rem;">
+            <span class="dot"></span>
+            <span>GOVERNANCE &amp; STANDARDS</span>
+          </div>
+          <h2 class="heading-lg" style="margin-bottom: 0.85rem;">The Delivery Model &amp; Quality Standard</h2>
+          <p class="section-desc" style="max-width: 740px; margin-left: auto; margin-right: auto;">
+            We operate three transparent delivery pathways, each held to a strict 8-factor vetting standard to ensure client protection.
+          </p>
+        </div>
+
+        <!-- 3 Delivery Channels -->
+        <div class="delivery-grid" data-reveal>
+          <div class="delivery-card">
+            <span class="model-badge">CORE DELIVERY</span>
+            <h3>Direct In-House Sprint</h3>
+            <p>Executed directly by Anant Nova core personnel. Daily standups, transparent GitHub/GitLab repositories, unified design systems, and direct sprint Slack/Discord communication.</p>
+          </div>
+
+          <div class="delivery-card">
+            <span class="model-badge" style="background: rgba(66, 158, 189, 0.15); color: var(--accent-blue);">PARTNER DELIVERY</span>
+            <h3>Managed Specialist Network</h3>
+            <p>Specialized tasks executed by pre-audited studios under Anant Nova tech lead oversight. One contract, unified billing, and guaranteed service level commitments.</p>
+          </div>
+
+          <div class="delivery-card">
+            <span class="model-badge" style="background: rgba(242, 127, 12, 0.15); color: var(--accent-amber);">CONNECT DELIVERY</span>
+            <h3>Strategic Partner Bridges</h3>
+            <p>Direct connections to chartered accountants, corporate IP lawyers, and enterprise cloud accounts with pre-packaged requirement briefs and established founder discounts.</p>
+          </div>
+        </div>
+
+        <!-- 8-Factor Quality Principle -->
+        <div class="about-quality-wrap" data-reveal>
+          <div class="quality-header">
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--accent-sage-deep);">The 8-Factor Partner Vetting Protocol</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 600px; margin: 0.35rem auto 0;">
+              Before any studio or provider enters Layer 02 or 03, they must pass rigorous evaluation across eight critical criteria:
+            </p>
+          </div>
+
+          <div class="quality-factors-grid">
+            <div class="quality-factor-item">
+              <span class="qf-num">01</span>
+              <div>
+                <strong>Technical Proficiency:</strong> Demonstrated architectural mastery and clean, documented output.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">02</span>
+              <div>
+                <strong>Verified Track Record:</strong> Validated portfolio of successful, high-retention live deployments.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">03</span>
+              <div>
+                <strong>SLA &amp; Turnaround Speed:</strong> Consistent delivery against agreed sprint milestones.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">04</span>
+              <div>
+                <strong>Clear Communication:</strong> Proactive milestone reporting with zero jargon confusion.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">05</span>
+              <div>
+                <strong>Security &amp; Compliance:</strong> Strict NDA adherence, IP ownership assignment, and data privacy.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">06</span>
+              <div>
+                <strong>Fair &amp; Transparent Cost:</strong> Honest pricing structures without hidden markups or sudden fees.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">07</span>
+              <div>
+                <strong>Ethical Integrity:</strong> Commitment to quality craftsmanship and transparent business conduct.
+              </div>
+            </div>
+
+            <div class="quality-factor-item">
+              <span class="qf-num">08</span>
+              <div>
+                <strong>Cultural &amp; Vision Alignment:</strong> Obsession with client success and high standards of excellence.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: LOCAL-FIRST STRATEGY & FLYWHEEL
+         ========================================== -->
+    <section class="section-py" id="local-first-flywheel">
+      <div class="container" style="max-width: 1080px;">
+        <div class="local-flow-container" data-reveal>
+          <div class="local-flow-header">
+            <div class="pill-badge sage" style="margin-bottom: 0.85rem;">
+              <span class="dot"></span>
+              <span>GROWTH DYNAMICS</span>
+            </div>
+            <h2 class="heading-lg" style="margin-bottom: 0.85rem;">The Local-First Growth Flywheel</h2>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 680px; margin: 0 auto; line-height: 1.6;">
+              We believe sustainable ecosystems don't start in abstract boardrooms. They take root by solving real operational friction for businesses on the ground, creating a self-reinforcing network effect.
+            </p>
+          </div>
+
+          <div class="local-steps-grid">
+            <div class="local-step-item">
+              <span class="step-num">STAGE 01</span>
+              <h4>Solve Real Friction</h4>
+              <p>Work shoulder-to-shoulder with local founders and retail businesses to eliminate real daily operational bottlenecks.</p>
+            </div>
+
+            <div class="local-step-item">
+              <span class="step-num">STAGE 02</span>
+              <h4>Build the Network</h4>
+              <p>Forge vetted bonds with regional manufacturing, printing studios, creatives, and technical specialists.</p>
+            </div>
+
+            <div class="local-step-item">
+              <span class="step-num">STAGE 03</span>
+              <h4>Scale Ecosystem</h4>
+              <p>Package validated playbooks, reusable infrastructure components, and expanding delivery capacity.</p>
+            </div>
+
+            <div class="local-step-item">
+              <span class="step-num">STAGE 04</span>
+              <h4>Network Effect</h4>
+              <p>Every new partner and client makes the ecosystem faster, more economical, and more powerful for all participants.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: NOVA LABS
+         ========================================== -->
+    <section class="section-py" id="nova-labs">
+      <div class="container" style="max-width: 1080px;">
+        <div class="nova-labs-banner" data-reveal>
+          <div style="position: relative; z-index: 2;">
+            <div class="pill-badge amber" style="background: rgba(242, 127, 12, 0.2); color: #FFAA5C; border-color: rgba(242, 127, 12, 0.35); margin-bottom: 1.25rem;">
+              <span class="dot" style="background: #FFAA5C;"></span>
+              <span>NOVA LABS • FRONTIER R&amp;D</span>
+            </div>
+            <h2 style="font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #FFFFFF;">
+              Where Tomorrow's Architecture is Tested Today.
+            </h2>
+            <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.65; max-width: 760px; margin-bottom: 2rem;">
+              Nova Labs is our internal skunkworks where we experiment with autonomous agent orchestration, edge AI inference, custom neural workflows, and novel human-computer interfaces. What passes rigorous stress testing in Nova Labs gets integrated directly into our client delivery pipelines.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+              <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="color: #FFAA5C; font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem;">LAB INITIATIVE 01</div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.4rem;">Autonomous Multi-Agent Chains</h4>
+                <p style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.75); line-height: 1.5;">Self-correcting AI workflows that automate customer triage, inventory syncing, and real-time operational alerts.</p>
+              </div>
+
+              <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="color: #FFAA5C; font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem;">LAB INITIATIVE 02</div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.4rem;">Generative 3D Light &amp; Shaders</h4>
+                <p style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.75); line-height: 1.5;">GPU-accelerated interactive WebGL environments optimized for sub-15ms frame times on low-power mobile devices.</p>
+              </div>
+
+              <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="color: #FFAA5C; font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem;">LAB INITIATIVE 03</div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF; margin-bottom: 0.4rem;">Domain-Specific Micro-SaaS</h4>
+                <p style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.75); line-height: 1.5;">Lightweight, modular operational engines designed to plug directly into enterprise legacy accounting and CRM systems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: THE PROMISE & CTA
+         ========================================== -->
+    <section class="section-py text-center" id="about-cta">
+      <div class="container" style="max-width: 860px;" data-reveal>
+        <div class="glass-panel about-cta-panel">
+          <span style="font-family: 'Space Grotesk', monospace; font-size: 0.8rem; font-weight: 800; color: var(--accent-sage); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem;">THE ANANT NOVA COMMITMENT</span>
+          <h2 class="heading-xl" style="font-size: clamp(1.6rem, 5vw, 2.4rem); margin-bottom: 1.25rem;">
+            "You bring the vision.<br>
+            <span class="italic-accent">We bring the ecosystem."</span>
+          </h2>
+          <p style="font-size: 1rem; color: var(--text-secondary); max-width: 620px; margin: 0 auto 2rem; line-height: 1.6;">
+            Whether you are launching your first breakthrough concept or scaling an established enterprise, our unified ecosystem is ready to execute. Launching 7 October 2026.
+          </p>
+
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary open-inquiry-modal" data-topic="Strategic Ecosystem Engagement">
+              <span>Start Your Project</span>
+              <div class="btn-icon-circle">→</div>
+            </button>
+            <a href="index.html#capabilities" class="btn btn-glass">
+              <span>Explore Capabilities Matrix</span>
+            </a>
+            <a href="team.html" class="btn btn-glass">
+              <span>Meet The Leadership Team</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       INTERACTIVE INQUIRY & STRATEGY MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="inquiry-modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close dialog">✕</button>
+      <div style="margin-bottom: 1.75rem;">
+        <span class="section-subtitle" style="font-size: 0.75rem;">EXECUTION STRATEGY BRIEF</span>
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-top: 0.25rem;">Start Your Project</h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem;">
+          Tell us about your ambition. Anant Nova's executive team will analyze your requirements and provide an execution roadmap within 24 hours.
+        </p>
+      </div>
+
+      <form id="inquiry-form">
+        <div class="form-group">
+          <label class="form-label" for="client-name">Your Name / Company</label>
+          <input type="text" id="client-name" class="form-input" placeholder="e.g. Alex Sharma / Nova Labs" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-email">Business Email</label>
+          <input type="email" id="client-email" class="form-input" placeholder="alex@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-topic-select">Primary Requirement Area</label>
+          <select id="modal-topic-select" class="form-select">
+            <option value="General Turnkey Ecosystem Execution">General Turnkey Ecosystem Execution</option>
+            <option value="Custom Software, SaaS & Web Apps">Custom Software, SaaS &amp; Web Apps</option>
+            <option value="AI Workflows & Autonomous Agents">AI Workflows &amp; Autonomous Agents</option>
+            <option value="Brand Identity, Logo & Packaging">Brand Identity, Logo &amp; Packaging</option>
+            <option value="AEO & High-Intent SEO Growth">AEO &amp; High-Intent SEO Growth</option>
+            <option value="Physical Sourcing & Printing Network">Physical Sourcing &amp; Printing Network</option>
+            <option value="New Business Setup & Legal Foundation">New Business Setup &amp; Legal Foundation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-message">Project Vision &amp; Scope</label>
+          <textarea id="client-message" class="form-textarea" rows="3" placeholder="Describe what you want to build, solve, or scale..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-nova" style="width: 100%; margin-top: 0.5rem;">
+          <span>Submit Execution Brief</span>
+          <div class="btn-icon-circle">→</div>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Master Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <img src="logo/favicon.svg" alt="Anant Nova Logo" class="logo-img" width="36" height="36">
+            <div class="brand-name">
+              <span>ANANT NOVA</span>
+              <span class="brand-tagline">Beyond Ideas. Built for You</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            The unified business and technology ecosystem. Delivering in-house software, artificial intelligence, brand engineering, and vetted specialist networks.
+          </p>
+          <div style="font-family: 'Space Grotesk', monospace; font-size: 0.78rem; font-weight: 700; color: var(--accent-sage-deep); margin-top: 1rem;">
+            PUBLIC LAUNCH: 7 OCTOBER 2026
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#problem">Problem &amp; Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#capabilities">Capabilities Matrix</a></li>
+            <li><a href="our-work.html">Our Work</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">The Ecosystem</h4>
+          <ul class="footer-links">
+            <li><a href="about.html#three-tier-architecture">Layer 01: Core Mastery</a></li>
+            <li><a href="about.html#three-tier-architecture">Layer 02: Vetted Network</a></li>
+            <li><a href="about.html#three-tier-architecture">Layer 03: Strategic Bridges</a></li>
+            <li><a href="about.html#delivery-model">8-Factor Quality Standard</a></li>
+            <li><a href="about.html#nova-labs">Nova Labs R&amp;D</a></li>
+            <li><a href="about.html#local-first-flywheel">Local-First Flywheel</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Get Started</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+            Ready to bring your business or tech concept into reality? Discuss your scope with our team.
+          </p>
+          <button class="btn btn-primary open-inquiry-modal" style="width: 100%;" data-topic="Footer Strategy Brief">
+            <span>Start a Project</span>
+            <div class="btn-icon-circle">→</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>&copy; 2026 Anant Nova. All Rights Reserved. Beyond Ideas. Built for You.</div>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="our-work.html">Our Work</a>
+          <a href="team.html">Team</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Master Interactive Scripts -->
+  <script src="assets/js/hero-shader.js?v=4.0"></script>
+  <script src="assets/js/main.js?v=4.3"></script>
+</body>
+</html>
