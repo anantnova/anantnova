@@ -10,13 +10,47 @@
   function initApp() {
 
   // ==========================================
-  // 1. Sticky Glass Header Scroll Effect
-  //    - Sticks across the page
+  // 1. Sticky Glass Header Scroll Effect & Dynamic Notice Bar Sync
+  //    - Measures notice bar height dynamically (handles 1 or multi-line wrap)
+  //    - Keeps header cleanly below notice bar at all scroll positions
   //    - Hides up smoothly when actively scrolling down
   //    - Re-emerges smoothly when scrolling stops or on scroll up
   //    - Condenses style when scrolled past announcement bar
   // ==========================================
   const siteHeader = document.querySelector('.site-header');
+  const topNoticeBar = document.querySelector('.top-notice-bar');
+
+  function getNoticeBarHeight() {
+    return topNoticeBar ? topNoticeBar.offsetHeight : 0;
+  }
+
+  function updateHeaderScroll() {
+    if (!siteHeader) return;
+    const currentScrollY = window.scrollY;
+    const noticeHeight = getNoticeBarHeight();
+    const remainingNotice = Math.max(0, noticeHeight - currentScrollY);
+
+    // Keep header positioned directly below whatever of the notice bar is visible
+    document.documentElement.style.setProperty('--notice-offset', `${remainingNotice}px`);
+
+    // Condense capsule once scrolled past the announcement bar
+    if (noticeHeight > 0 ? currentScrollY >= noticeHeight : currentScrollY > 25) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  }
+
+  function syncNoticeBar() {
+    const height = getNoticeBarHeight();
+    document.documentElement.style.setProperty('--notice-bar-height', `${height}px`);
+    updateHeaderScroll();
+  }
+
+  // Initial measurement and resize tracking
+  syncNoticeBar();
+  window.addEventListener('resize', syncNoticeBar, { passive: true });
+
   if (siteHeader) {
     let lastScrollY = window.scrollY;
     let scrollStopTimer = null;
@@ -25,17 +59,13 @@
       const currentScrollY = window.scrollY;
       const delta = currentScrollY - lastScrollY;
 
-      // Condensed floating capsule style once scrolled past notice bar
-      if (currentScrollY > 35) {
-        siteHeader.classList.add('scrolled');
-      } else {
-        siteHeader.classList.remove('scrolled');
-      }
+      updateHeaderScroll();
 
       // Hide navbar when actively scrolling down past initial threshold
-      if (delta > 6 && currentScrollY > 80) {
+      const noticeHeight = getNoticeBarHeight();
+      if (delta > 6 && currentScrollY > (noticeHeight + 35)) {
         siteHeader.classList.add('nav-hidden');
-      } else if (delta < 0 || currentScrollY <= 40) {
+      } else if (delta < 0 || currentScrollY <= noticeHeight) {
         // Immediately reveal when scrolling up or near page top
         siteHeader.classList.remove('nav-hidden');
       }
@@ -72,6 +102,7 @@
       mobileMenuBtn.classList.add('active');
       mobileMenuBtn.setAttribute('aria-expanded', 'true');
     }
+    document.body.classList.add('mobile-nav-open');
     document.body.style.overflow = 'hidden';
   }
 
@@ -83,6 +114,7 @@
       mobileMenuBtn.classList.remove('active');
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
+    document.body.classList.remove('mobile-nav-open');
     document.body.style.overflow = '';
   }
 
@@ -116,6 +148,12 @@
       closeMobileNav();
     }
   });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1060 && mobileDrawer && mobileDrawer.classList.contains('open')) {
+      closeMobileNav();
+    }
+  }, { passive: true });
 
   // ==========================================
   // 2b. Smooth Scroll with Dynamic Header Offset
