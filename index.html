@@ -35,7 +35,7 @@
   <link rel="icon" type="image/png" href="logo/favicon.svg">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=4.4">
+  <link rel="stylesheet" href="assets/css/style.css?v=5.1">
 
   <!-- Comprehensive Schema.org JSON-LD for SEO & AEO (Answer Engine Optimization) -->
   <script type="application/ld+json">
@@ -214,54 +214,422 @@
          HERO SECTION: Generative 3D Light Fluid WebGL
          ========================================== -->
     <section class="hero-section" id="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge-wrap" data-reveal="fade-up">
-            <div class="pill-badge">
-              <span class="dot"></span>
-              <span>Your Complete Business & Technology Partner</span>
+      <div class="container hero-container">
+        <!-- Hero Interactive Stage -->
+        <div class="hero-stage">
+          <!-- Ambient Decorative Curved Vector Connectors & Glowing Ecosystem Nodes -->
+          <svg class="hero-connector-svg" viewBox="0 0 1440 500" fill="none" preserveAspectRatio="none"
+            aria-hidden="true">
+            <defs>
+              <radialGradient id="nodeGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#3F6F5E" stop-opacity="0.45" />
+                <stop offset="60%" stop-color="#3F6F5E" stop-opacity="0.15" />
+                <stop offset="100%" stop-color="#3F6F5E" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+
+            <!-- Base Curved Relationship Lines -->
+            <g class="connector-base-paths">
+              <!-- Path 1: Top-Left Card (Slot 0) to Central Ecosystem Node -->
+              <path d="M 440 120 C 470 122, 490 140, 510 142" stroke="rgba(63, 111, 94, 0.28)" stroke-width="1.2"
+                stroke-linecap="round" />
+              <!-- Path 2: Bottom-Left Card (Slot 1) to Central Ecosystem Node (Left gutter) -->
+              <path d="M 470 360 C 488 362, 500 352, 515 345" stroke="rgba(63, 111, 94, 0.28)" stroke-width="1.2"
+                stroke-linecap="round" />
+              <!-- Path 3: Top-Right Card (Slot 2) to Central Ecosystem Node -->
+              <path d="M 1020 115 C 990 120, 965 136, 935 132" stroke="rgba(63, 111, 94, 0.28)" stroke-width="1.2"
+                stroke-linecap="round" />
+              <!-- Path 4: Middle-Right Card (Slot 3) to Central Ecosystem Node -->
+              <path d="M 995 250 C 970 250, 952 252, 930 248" stroke="rgba(63, 111, 94, 0.28)" stroke-width="1.2"
+                stroke-linecap="round" />
+              <!-- Path 5: Bottom-Right Card (Slot 4) to Central Ecosystem Node (Right gutter) -->
+              <path d="M 1020 390 C 995 385, 975 372, 950 365" stroke="rgba(63, 111, 94, 0.28)" stroke-width="1.2"
+                stroke-linecap="round" />
+            </g>
+
+            <!-- Animated Traveling Light Pulse Flow (Slow Organic Pulses) -->
+            <g class="connector-pulse-paths">
+              <path d="M 440 120 C 470 122, 490 140, 510 142" class="connector-pulse-line pulse-1" stroke="#3F6F5E"
+                stroke-width="1.5" stroke-linecap="round" />
+              <path d="M 470 360 C 488 362, 500 352, 515 345" class="connector-pulse-line pulse-2" stroke="#3F6F5E"
+                stroke-width="1.5" stroke-linecap="round" />
+              <path d="M 1020 115 C 990 120, 965 136, 935 132" class="connector-pulse-line pulse-3" stroke="#3F6F5E"
+                stroke-width="1.5" stroke-linecap="round" />
+              <path d="M 995 250 C 970 250, 952 252, 930 248" class="connector-pulse-line pulse-4" stroke="#3F6F5E"
+                stroke-width="1.5" stroke-linecap="round" />
+              <path d="M 1020 390 C 995 385, 975 372, 950 365" class="connector-pulse-line pulse-5" stroke="#3F6F5E"
+                stroke-width="1.5" stroke-linecap="round" />
+            </g>
+
+            <!-- Central Data Connection Nodes with Glowing Halos -->
+            <g class="connector-terminal-nodes">
+              <!-- Node 1: Left Upper Terminal -->
+              <circle cx="510" cy="142" r="8.5" fill="url(#nodeGlowGrad)" class="node-halo-pulse" />
+              <circle cx="510" cy="142" r="3.2" fill="#3F6F5E" />
+
+              <!-- Node 2: Left Lower Terminal -->
+              <circle cx="515" cy="345" r="8.5" fill="url(#nodeGlowGrad)" class="node-halo-pulse" />
+              <circle cx="515" cy="345" r="3.2" fill="#3F6F5E" />
+
+              <!-- Node 3: Right Upper Terminal -->
+              <circle cx="935" cy="132" r="8.5" fill="url(#nodeGlowGrad)" class="node-halo-pulse" />
+              <circle cx="935" cy="132" r="3.2" fill="#3F6F5E" />
+
+              <!-- Node 4: Right Middle Terminal -->
+              <circle cx="930" cy="248" r="8.5" fill="url(#nodeGlowGrad)" class="node-halo-pulse" />
+              <circle cx="930" cy="248" r="3.2" fill="#3F6F5E" />
+
+              <!-- Node 5: Right Lower Terminal -->
+              <circle cx="950" cy="365" r="8.5" fill="url(#nodeGlowGrad)" class="node-halo-pulse" />
+              <circle cx="950" cy="365" r="3.2" fill="#3F6F5E" />
+            </g>
+          </svg>
+
+          <!-- Desktop Floating Conversational Cards (Left: 2 Larger Cards, Visual Focus) -->
+          <div class="hero-floating-cards-left" aria-label="Ecosystem inquiries left">
+            <!-- Card Left 1: Large Primary Focus (#10 ⭐ Main Hero Question) -->
+            <div class="hero-card-3d-wrapper wrapper-left-1" id="desktop-wrapper-0">
+              <div class="card-depth-plate plate-secondary" aria-hidden="true"></div>
+              <div class="card-depth-plate plate-primary" aria-hidden="true"></div>
+              <article class="hero-convo-card card-large card-float-1 glass-card-sheen" id="desktop-convo-0"
+                data-slot="0">
+                <div class="convo-card-flip-inner">
+                  <div class="convo-user-row">
+                    <div class="convo-avatar-box">
+                      <img src="assets/images/avatars/avatar_1.jpg" alt="Startup Founder" class="convo-avatar-img">
+                    </div>
+                    <p class="convo-question-text">Can one team handle everything I need to build my business?</p>
+                    <span class="convo-timestamp">9:41 AM</span>
+                  </div>
+                  <div class="convo-response-bubble">
+                    <div class="convo-brand-mark">
+                      <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                    </div>
+                    <p class="convo-answer-text">That’s exactly what Anant Nova is built for.</p>
+                    <span class="convo-action-arrow">›</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card Left 2: Large Focus (#02 Premium Website) -->
+            <div class="hero-card-3d-wrapper wrapper-left-2" id="desktop-wrapper-1">
+              <div class="card-depth-plate plate-secondary" aria-hidden="true"></div>
+              <div class="card-depth-plate plate-primary" aria-hidden="true"></div>
+              <article class="hero-convo-card card-large card-float-2 glass-card-sheen" id="desktop-convo-1"
+                data-slot="1">
+                <div class="convo-card-flip-inner">
+                  <div class="convo-user-row">
+                    <div class="convo-avatar-box">
+                      <img src="assets/images/avatars/avatar_2.jpg" alt="Brand Founder" class="convo-avatar-img">
+                    </div>
+                    <p class="convo-question-text">Who can build a premium website that actually feels like my brand?
+                    </p>
+                    <span class="convo-timestamp">9:42 AM</span>
+                  </div>
+                  <div class="convo-response-bubble">
+                    <div class="convo-brand-mark">
+                      <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                    </div>
+                    <p class="convo-answer-text">We design and build premium digital experiences around your brand.</p>
+                    <span class="convo-action-arrow">›</span>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
 
-          <h1 class="heading-xl hero-title" data-reveal="fade-up" data-delay="1">
-            One Ecosystem.<br>
-            <span class="italic-accent">Everything You Need</span><br>
-            to Start, Build &amp; Grow.
-          </h1>
+          <!-- Central Hero Content -->
+          <div class="hero-content">
+            <div class="hero-badge-wrap" data-reveal="fade-up">
+              <div class="pill-badge">
+                <span class="dot"></span>
+                <span>YOUR COMPLETE BUSINESS &amp; TECHNOLOGY PARTNER</span>
+              </div>
+            </div>
 
-          <p class="hero-description" data-reveal="fade-up" data-delay="2">
-            Starting or growing a business can mean dealing with too many different people and vendors. Anant Nova
-            brings it all together in one place — from business setup, branding, technology and AI to marketing,
-            printing, packaging and trusted business partners. You have one point of contact, and we help make
-            everything happen.
-          </p>
+            <h1 class="heading-xl hero-title" data-reveal="fade-up" data-delay="1">
+              One Ecosystem.<br>
+              <span class="italic-accent">Everything You Need</span><br>
+              to Start, Build &amp; Grow.
+            </h1>
 
-          <div class="hero-cta-group" data-reveal="fade-up" data-delay="3">
-            <button class="btn btn-nova open-inquiry-modal" data-topic="Hero CTA — Start Project">
-              <span>Start Your Project</span>
-              <div class="btn-icon-circle">→</div>
-            </button>
-            <a href="#layers" class="btn btn-glass">
-              <span>Explore The Ecosystem</span>
-            </a>
+            <p class="hero-description" data-reveal="fade-up" data-delay="2">
+              Starting or growing a business can mean dealing with too many different people and vendors. Anant Nova
+              brings it all together in one place — from business setup, branding, technology and AI to marketing,
+              printing, packaging and trusted business partners. You have one point of contact, and we help make
+              everything happen.
+            </p>
+
+            <div class="hero-cta-group" data-reveal="fade-up" data-delay="3">
+              <button class="btn btn-nova open-inquiry-modal" data-topic="Hero CTA — Start Project">
+                <span>Start Your Project</span>
+                <div class="btn-icon-circle">→</div>
+              </button>
+              <a href="#layers" class="btn btn-glass">
+                <span>Explore The Ecosystem</span>
+              </a>
+            </div>
+
+            <!-- Mobile Conversational Card (Visible on <= 1024px) -->
+            <div class="hero-mobile-convo-wrap" id="hero-mobile-convo-wrap" data-reveal="fade-up" data-delay="3">
+              <div class="mobile-card-3d-wrapper">
+                <div class="card-depth-plate mobile-plate" aria-hidden="true"></div>
+                <article class="hero-convo-card mobile-convo-card glass-card-sheen" id="mobile-hero-convo-card">
+                  <div class="convo-card-flip-inner">
+                    <div class="convo-user-row">
+                      <div class="convo-avatar-box">
+                        <img src="assets/images/avatars/avatar_1.jpg" alt="Startup Founder" class="convo-avatar-img"
+                          id="mobile-avatar-img">
+                      </div>
+                      <p class="convo-question-text" id="mobile-question-text">Can one team handle everything I need to
+                        build my business?</p>
+                      <span class="convo-timestamp" id="mobile-timestamp">9:41 AM</span>
+                    </div>
+                    <div class="convo-response-bubble">
+                      <div class="convo-brand-mark">
+                        <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                      </div>
+                      <p class="convo-answer-text" id="mobile-answer-text">That’s exactly what Anant Nova is built for.
+                      </p>
+                      <span class="convo-action-arrow">→</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Mobile Pagination Dots & Progress Counter -->
+              <div class="mobile-convo-pagination">
+                <div class="mobile-convo-dots" id="mobile-convo-dots" role="tablist" aria-label="Conversation progress">
+                  <button class="mobile-convo-dot" data-index="0" aria-label="Question 01"></button>
+                  <button class="mobile-convo-dot" data-index="1" aria-label="Question 02"></button>
+                  <button class="mobile-convo-dot" data-index="2" aria-label="Question 03"></button>
+                  <button class="mobile-convo-dot" data-index="3" aria-label="Question 04"></button>
+                  <button class="mobile-convo-dot" data-index="4" aria-label="Question 05"></button>
+                  <button class="mobile-convo-dot" data-index="5" aria-label="Question 06"></button>
+                  <button class="mobile-convo-dot" data-index="6" aria-label="Question 07"></button>
+                  <button class="mobile-convo-dot" data-index="7" aria-label="Question 08"></button>
+                  <button class="mobile-convo-dot" data-index="8" aria-label="Question 09"></button>
+                  <button class="mobile-convo-dot active" data-index="9" aria-label="Question 10 (Active)"></button>
+                </div>
+                <div class="mobile-convo-counter font-mono" id="mobile-convo-counter">10 / 10</div>
+              </div>
+            </div>
           </div>
 
-          <!-- Trust Metrics Bar -->
-          <div class="hero-trust-metrics" data-reveal="fade-up" data-delay="4">
-            <div class="metric-item">
-              <span class="metric-val">1</span>
-              <span class="metric-label">Point of Contact</span>
+          <!-- Desktop Floating Conversational Cards (Right: 3 Compact Secondary Cards) -->
+          <div class="hero-floating-cards-right" aria-label="Ecosystem inquiries right">
+            <!-- Card Right 1: Compact (#04 Packaging & Printing) -->
+            <div class="hero-card-3d-wrapper wrapper-right-1" id="desktop-wrapper-2">
+              <div class="card-depth-plate plate-secondary" aria-hidden="true"></div>
+              <div class="card-depth-plate plate-primary" aria-hidden="true"></div>
+              <article class="hero-convo-card card-compact card-float-3 glass-card-sheen" id="desktop-convo-2"
+                data-slot="2">
+                <div class="convo-card-flip-inner">
+                  <div class="convo-user-row">
+                    <div class="convo-avatar-box">
+                      <img src="assets/images/avatars/avatar_3.jpg" alt="Product Entrepreneur" class="convo-avatar-img">
+                    </div>
+                    <p class="convo-question-text">Where can I get packaging, labels &amp; printing done reliably?</p>
+                    <span class="convo-timestamp">9:43 AM</span>
+                  </div>
+                  <div class="convo-response-bubble">
+                    <div class="convo-brand-mark">
+                      <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                    </div>
+                    <p class="convo-answer-text">From packaging to print, we connect you with trusted execution
+                      partners.</p>
+                    <span class="convo-action-arrow">›</span>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="metric-item">
-              <span class="metric-val">100%</span>
-              <span class="metric-label">In-House Tech &amp; AI</span>
+
+            <!-- Card Right 2: Compact (#05 Legal & Compliance) -->
+            <div class="hero-card-3d-wrapper wrapper-right-2" id="desktop-wrapper-3">
+              <div class="card-depth-plate plate-secondary" aria-hidden="true"></div>
+              <div class="card-depth-plate plate-primary" aria-hidden="true"></div>
+              <article class="hero-convo-card card-compact card-float-4 glass-card-sheen" id="desktop-convo-3"
+                data-slot="3">
+                <div class="convo-card-flip-inner">
+                  <div class="convo-user-row">
+                    <div class="convo-avatar-box">
+                      <img src="assets/images/avatars/avatar_4.jpg" alt="Business Founder" class="convo-avatar-img">
+                    </div>
+                    <p class="convo-question-text">Who can help with company registration, legal &amp; compliance?</p>
+                    <span class="convo-timestamp">9:44 AM</span>
+                  </div>
+                  <div class="convo-response-bubble">
+                    <div class="convo-brand-mark">
+                      <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                    </div>
+                    <p class="convo-answer-text">We help coordinate the right professionals for your business
+                      requirements.</p>
+                    <span class="convo-action-arrow">›</span>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="metric-item">
-              <span class="metric-val">360°</span>
-              <span class="metric-label">Start-to-Evolve Coverage</span>
+
+            <!-- Card Right 3: Compact (#06 Multiple Vendors) -->
+            <div class="hero-card-3d-wrapper wrapper-right-3" id="desktop-wrapper-4">
+              <div class="card-depth-plate plate-secondary" aria-hidden="true"></div>
+              <div class="card-depth-plate plate-primary" aria-hidden="true"></div>
+              <article class="hero-convo-card card-compact card-float-5 glass-card-sheen" id="desktop-convo-4"
+                data-slot="4">
+                <div class="convo-card-flip-inner">
+                  <div class="convo-user-row">
+                    <div class="convo-avatar-box">
+                      <img src="assets/images/avatars/avatar_5.jpg" alt="Startup Founder" class="convo-avatar-img">
+                    </div>
+                    <p class="convo-question-text">Do I really need to manage ten different vendors?</p>
+                    <span class="convo-timestamp">9:45 AM</span>
+                  </div>
+                  <div class="convo-response-bubble">
+                    <div class="convo-brand-mark">
+                      <img src="logo/mark-green.svg" alt="Anant Nova" width="16" height="16">
+                    </div>
+                    <p class="convo-answer-text">No. Anant Nova brings your business needs together in one place.</p>
+                    <span class="convo-action-arrow">›</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Trust Card Section: Desktop Horizontal Pill & Mobile 2x2 Grid -->
+        <div class="hero-trust-wrapper">
+          <!-- Desktop Horizontal Capsule -->
+          <div class="trust-capsule-desktop">
+            <div class="trust-pill-col">
+              <div class="trust-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
+                  <circle cx="12" cy="12" r="3.5"></circle>
+                </svg>
+              </div>
+              <div class="trust-pill-meta">
+                <span class="trust-val">10+</span>
+                <span class="trust-lbl">Core Services</span>
+              </div>
+            </div>
+
+            <div class="trust-col-divider" aria-hidden="true"></div>
+
+            <div class="trust-pill-col">
+              <div class="trust-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="M9 12l2 2 4-4"></path>
+                </svg>
+              </div>
+              <div class="trust-pill-meta">
+                <span class="trust-val">Trusted</span>
+                <span class="trust-lbl">Partner Network</span>
+              </div>
+            </div>
+
+            <div class="trust-col-divider" aria-hidden="true"></div>
+
+            <div class="trust-pill-col">
+              <div class="trust-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
+                </svg>
+              </div>
+              <div class="trust-pill-meta">
+                <span class="trust-val">End-to-End</span>
+                <span class="trust-lbl">Execution</span>
+              </div>
+            </div>
+
+            <div class="trust-col-divider" aria-hidden="true"></div>
+
+            <div class="trust-pill-col">
+              <div class="trust-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="trust-pill-meta">
+                <span class="trust-val">One</span>
+                <span class="trust-lbl">Point of Contact</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile 2x2 Grid Card -->
+          <div class="trust-grid-mobile">
+            <div class="trust-mobile-quadrant">
+              <div class="trust-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
+                  <circle cx="12" cy="12" r="3.5"></circle>
+                </svg>
+              </div>
+              <div class="trust-quadrant-meta">
+                <span class="trust-val">10+</span>
+                <span class="trust-lbl">Core Services</span>
+              </div>
+            </div>
+
+            <div class="trust-mobile-quadrant">
+              <div class="trust-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="M9 12l2 2 4-4"></path>
+                </svg>
+              </div>
+              <div class="trust-quadrant-meta">
+                <span class="trust-val">Trusted</span>
+                <span class="trust-lbl">Partner Network</span>
+              </div>
+            </div>
+
+            <div class="trust-mobile-quadrant">
+              <div class="trust-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
+                </svg>
+              </div>
+              <div class="trust-quadrant-meta">
+                <span class="trust-val">End-to-End</span>
+                <span class="trust-lbl">Execution</span>
+              </div>
+            </div>
+
+            <div class="trust-mobile-quadrant">
+              <div class="trust-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="trust-quadrant-meta">
+                <span class="trust-val">One</span>
+                <span class="trust-lbl">Point of Contact</span>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1177,7 +1545,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/hero-shader.js?v=4.0"></script>
-  <script src="assets/js/main.js?v=4.3"></script>
+  <script src="assets/js/main.js?v=4.9"></script>
 </body>
 
 </html>

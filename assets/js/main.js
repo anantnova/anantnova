@@ -871,6 +871,372 @@
   }
 
   initLegalNavigation();
+
+  // ==========================================
+  // 12. Hero Conversational Question Cards & Responsive Trust Architecture
+  //     - 10 Ecosystem Conversations (Client Inquiries & Execution Answers)
+  //     - Desktop: 5 Cards (2 large left focus, 3 compact right), staggered ambient floating
+  //     - Mobile: 1 Card below CTAs, 10-dot pagination + '10 / 10' counter
+  //     - Staggered, layout-stable crossfade auto-rotation (never causes CLS or layout shift)
+  //     - Touch swipe and dot navigation support with pause on hover/interaction
+  // ==========================================
+  function initHeroConversations() {
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
+
+    const HERO_CONVERSATIONS = [
+      {
+        id: "01",
+        num: "01",
+        category: "Business Setup",
+        question: "I want to start a business. Where do I begin?",
+        answer: "From setup to launch, we help you build it step by step.",
+        time: "9:40 AM",
+        avatar: "assets/images/avatars/avatar_1.jpg",
+        userAlt: "Founder starting a business"
+      },
+      {
+        id: "02",
+        num: "02",
+        category: "Premium Website",
+        question: "Who can build a premium website that actually feels like my brand?",
+        answer: "We design and build premium digital experiences around your brand.",
+        time: "9:42 AM",
+        avatar: "assets/images/avatars/avatar_2.jpg",
+        userAlt: "Brand Founder"
+      },
+      {
+        id: "03",
+        num: "03",
+        category: "Branding + Growth",
+        question: "Can someone handle my branding, marketing & growth together?",
+        answer: "Yes. One ecosystem, one point of contact, built to grow with you.",
+        time: "9:41 AM",
+        avatar: "assets/images/avatars/avatar_4.jpg",
+        userAlt: "Growth Lead"
+      },
+      {
+        id: "04",
+        num: "04",
+        category: "Packaging & Printing",
+        question: "Where can I get my packaging, labels & printing done reliably?",
+        answer: "From packaging to print, we connect you with trusted execution partners.",
+        time: "9:43 AM",
+        avatar: "assets/images/avatars/avatar_3.jpg",
+        userAlt: "Product Entrepreneur"
+      },
+      {
+        id: "05",
+        num: "05",
+        category: "Legal & Compliance",
+        question: "Who can help with company registration, legal & compliance?",
+        answer: "We help coordinate the right professionals for your business requirements.",
+        time: "9:44 AM",
+        avatar: "assets/images/avatars/avatar_4.jpg",
+        userAlt: "Business Owner"
+      },
+      {
+        id: "06",
+        num: "06",
+        category: "Multiple Vendors",
+        question: "Do I really need to manage ten different vendors?",
+        answer: "No. Anant Nova brings your business needs together in one place.",
+        time: "9:45 AM",
+        avatar: "assets/images/avatars/avatar_5.jpg",
+        userAlt: "Operations Lead"
+      },
+      {
+        id: "07",
+        num: "07",
+        category: "Software & Apps",
+        question: "Can you build the software or app my business actually needs?",
+        answer: "From web apps to custom software, we build technology around your goals.",
+        time: "9:46 AM",
+        avatar: "assets/images/avatars/avatar_1.jpg",
+        userAlt: "Tech Founder"
+      },
+      {
+        id: "08",
+        num: "08",
+        category: "AI & Automation",
+        question: "Where can I use AI and automation to make my business smarter?",
+        answer: "We identify opportunities and build practical AI-powered workflows for your business.",
+        time: "9:47 AM",
+        avatar: "assets/images/avatars/avatar_3.jpg",
+        userAlt: "Operations Director"
+      },
+      {
+        id: "09",
+        num: "09",
+        category: "Marketing & Visibility",
+        question: "How do I get my business seen by the right customers?",
+        answer: "From marketing to SEO and AEO, we help your business get discovered and grow.",
+        time: "9:48 AM",
+        avatar: "assets/images/avatars/avatar_2.jpg",
+        userAlt: "Marketing Director"
+      },
+      {
+        id: "10",
+        num: "10",
+        category: "Main Hero Question",
+        question: "Can one team handle everything I need to build my business?",
+        answer: "That’s exactly what Anant Nova is built for.",
+        time: "9:41 AM",
+        avatar: "assets/images/avatars/avatar_1.jpg",
+        userAlt: "Startup Founder"
+      }
+    ];
+
+    // Helper: update card contents with smooth physical vertical 3D card flip
+    function updateCardElements(cardEl, convo) {
+      if (!cardEl || !convo) return;
+
+      // Phase 1: Card rotates up & away around horizontal axis (-90deg)
+      cardEl.classList.remove('is-flipping-in', 'is-flipping-prep');
+      cardEl.classList.add('is-flipping-out');
+
+      setTimeout(() => {
+        // Swap content while completely edge-on / hidden
+        const avatarImg = cardEl.querySelector('.convo-avatar-img');
+        const questionText = cardEl.querySelector('.convo-question-text');
+        const timeText = cardEl.querySelector('.convo-timestamp');
+        const answerText = cardEl.querySelector('.convo-answer-text');
+
+        if (avatarImg) {
+          avatarImg.src = convo.avatar;
+          avatarImg.alt = convo.userAlt;
+        }
+        if (questionText) questionText.textContent = convo.question;
+        if (timeText) timeText.textContent = convo.time;
+        if (answerText) answerText.textContent = convo.answer;
+
+        // Phase 2: Instantly set preparation state at +90deg (without animation)
+        cardEl.classList.remove('is-flipping-out');
+        cardEl.classList.add('is-flipping-prep');
+
+        // Force synchronous reflow to ensure the prep state is rendered
+        void cardEl.offsetWidth;
+
+        // Phase 3: Smoothly rotate down into resting 0deg position
+        requestAnimationFrame(() => {
+          cardEl.classList.remove('is-flipping-prep');
+          cardEl.classList.add('is-flipping-in');
+
+          setTimeout(() => {
+            cardEl.classList.remove('is-flipping-in');
+          }, 450);
+        });
+      }, 340);
+    }
+
+    // --- Desktop Rotation Setup ---
+    const desktopCards = [
+      document.getElementById('desktop-convo-0'),
+      document.getElementById('desktop-convo-1'),
+      document.getElementById('desktop-convo-2'),
+      document.getElementById('desktop-convo-3'),
+      document.getElementById('desktop-convo-4')
+    ];
+
+    // Check if desktop cards exist in DOM
+    if (desktopCards[0]) {
+      // Slot 0 starts with #10 (idx 9), Slot 1 with #02 (idx 1), Slot 2 with #04 (idx 3), etc.
+      const desktopSlotIndices = [9, 1, 3, 4, 5];
+      const secondarySlotsToRotate = [2, 3, 4, 1, 0];
+      const rotationPool = [0, 2, 6, 7, 8, 9, 1, 3, 4, 5];
+      let poolPointer = 0;
+      let desktopSlotPointer = 0;
+      let isDesktopHovered = false;
+
+      const desktopCardsLeft = document.querySelector('.hero-floating-cards-left');
+      const desktopCardsRight = document.querySelector('.hero-floating-cards-right');
+
+      [desktopCardsLeft, desktopCardsRight].forEach(col => {
+        if (!col) return;
+        col.addEventListener('mouseenter', () => { isDesktopHovered = true; });
+        col.addEventListener('mouseleave', () => { isDesktopHovered = false; });
+      });
+
+      function rotateDesktopSlot() {
+        if (isDesktopHovered) return;
+        if (window.innerWidth <= 1024) return;
+
+        const targetSlot = secondarySlotsToRotate[desktopSlotPointer];
+        const targetCard = desktopCards[targetSlot];
+        if (!targetCard) return;
+
+        let attempts = 0;
+        let nextIndex = rotationPool[poolPointer];
+        while (desktopSlotIndices.includes(nextIndex) && attempts < rotationPool.length) {
+          poolPointer = (poolPointer + 1) % rotationPool.length;
+          nextIndex = rotationPool[poolPointer];
+          attempts++;
+        }
+
+        poolPointer = (poolPointer + 1) % rotationPool.length;
+        desktopSlotIndices[targetSlot] = nextIndex;
+
+        updateCardElements(targetCard, HERO_CONVERSATIONS[nextIndex]);
+        desktopSlotPointer = (desktopSlotPointer + 1) % secondarySlotsToRotate.length;
+      }
+
+      setInterval(rotateDesktopSlot, 5600);
+    }
+
+    // --- Restrained Desktop Mouse Parallax Controller ---
+    const heroStage = document.querySelector('.hero-stage');
+
+    if (heroSection && heroStage && window.matchMedia('(min-width: 1025px)').matches) {
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isMouseInside = false;
+      let parallaxRafId = null;
+
+      function updateParallax() {
+        // Smooth linear interpolation (lerp)
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        // Apply restrained CSS properties to the stage:
+        // translateX ±6px, translateY ±4px, rotateX ±1deg, rotateY ±1deg
+        const px = (currentX * 12).toFixed(2);
+        const py = (currentY * 8).toFixed(2);
+        const rotX = (-currentY * 1.8).toFixed(2);
+        const rotY = (currentX * 2.0).toFixed(2);
+
+        heroStage.style.setProperty('--parallax-x', `${px}px`);
+        heroStage.style.setProperty('--parallax-y', `${py}px`);
+        heroStage.style.setProperty('--parallax-rot-x', `${rotX}deg`);
+        heroStage.style.setProperty('--parallax-rot-y', `${rotY}deg`);
+
+        if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001 || isMouseInside) {
+          parallaxRafId = requestAnimationFrame(updateParallax);
+        } else {
+          parallaxRafId = null;
+        }
+      }
+
+      function startParallaxLoop() {
+        if (!parallaxRafId) {
+          parallaxRafId = requestAnimationFrame(updateParallax);
+        }
+      }
+
+      heroSection.addEventListener('mousemove', (e) => {
+        isMouseInside = true;
+        const rect = heroSection.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) - 0.5;
+        targetY = ((e.clientY - rect.top) / rect.height) - 0.5;
+        startParallaxLoop();
+      }, { passive: true });
+
+      heroSection.addEventListener('mouseleave', () => {
+        isMouseInside = false;
+        targetX = 0;
+        targetY = 0;
+        startParallaxLoop();
+      }, { passive: true });
+    }
+
+    // --- Mobile Rotation & Pagination Setup ---
+    const mobileCard = document.getElementById('mobile-hero-convo-card');
+    const mobileDotsContainer = document.getElementById('mobile-convo-dots');
+    const mobileCounter = document.getElementById('mobile-convo-counter');
+    let currentMobileIndex = 9; // Starts with #10
+    let isMobileInteracting = false;
+    let mobileTimer = null;
+
+    function renderMobilePagination() {
+      if (!mobileDotsContainer) return;
+      mobileDotsContainer.innerHTML = '';
+      for (let i = 0; i < HERO_CONVERSATIONS.length; i++) {
+        const dot = document.createElement('button');
+        dot.className = `mobile-convo-dot ${i === currentMobileIndex ? 'active' : ''}`;
+        dot.setAttribute('data-index', i);
+        dot.setAttribute('aria-label', `Conversation ${HERO_CONVERSATIONS[i].num}`);
+        dot.addEventListener('click', () => {
+          goToMobileConversation(i);
+        });
+        mobileDotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateMobilePagination() {
+      if (mobileDotsContainer) {
+        const dots = mobileDotsContainer.querySelectorAll('.mobile-convo-dot');
+        dots.forEach((dot, idx) => {
+          if (idx === currentMobileIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+      if (mobileCounter) {
+        mobileCounter.textContent = `${HERO_CONVERSATIONS[currentMobileIndex].num} / 10`;
+      }
+    }
+
+    function goToMobileConversation(index) {
+      if (index === currentMobileIndex) return;
+      currentMobileIndex = index;
+      updateCardElements(mobileCard, HERO_CONVERSATIONS[currentMobileIndex]);
+      updateMobilePagination();
+      resetMobileTimer();
+    }
+
+    function rotateMobileNext() {
+      if (isMobileInteracting) return;
+      if (window.innerWidth > 1024) return;
+      currentMobileIndex = (currentMobileIndex + 1) % HERO_CONVERSATIONS.length;
+      updateCardElements(mobileCard, HERO_CONVERSATIONS[currentMobileIndex]);
+      updateMobilePagination();
+    }
+
+    function resetMobileTimer() {
+      if (mobileTimer) clearInterval(mobileTimer);
+      mobileTimer = setInterval(rotateMobileNext, 5600);
+    }
+
+    // Touch swipe support on mobile card
+    if (mobileCard) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      mobileCard.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        isMobileInteracting = true;
+      }, { passive: true });
+
+      mobileCard.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        setTimeout(() => { isMobileInteracting = false; }, 2000);
+      }, { passive: true });
+
+      mobileCard.addEventListener('mouseenter', () => { isMobileInteracting = true; });
+      mobileCard.addEventListener('mouseleave', () => { isMobileInteracting = false; });
+
+      function handleSwipe() {
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) {
+            goToMobileConversation((currentMobileIndex + 1) % HERO_CONVERSATIONS.length);
+          } else {
+            goToMobileConversation((currentMobileIndex - 1 + HERO_CONVERSATIONS.length) % HERO_CONVERSATIONS.length);
+          }
+        }
+      }
+    }
+
+    renderMobilePagination();
+    updateMobilePagination();
+    resetMobileTimer();
+  }
+
+  initHeroConversations();
   }
 
   if (document.readyState === 'loading') {
