@@ -667,6 +667,210 @@
       }, 220);
     });
   });
+
+  // ==========================================
+  // 12. Legal Documents Navigation & Sticky Floating Mobile TOC
+  // ==========================================
+  function initLegalNavigation() {
+    const desktopTocAside = document.querySelector('.legal-toc-aside');
+    const mobileTocCard = document.getElementById('legal-mobile-toc');
+    if (!desktopTocAside && !mobileTocCard) return;
+
+    const legalCards = Array.from(document.querySelectorAll('.legal-card[id]'));
+    if (legalCards.length === 0) return;
+
+    const desktopLinks = Array.from(document.querySelectorAll('.legal-toc-link'));
+    const mobileTrigger = document.getElementById('mobile-toc-trigger');
+    const mobileCurrentLabel = document.getElementById('mobile-toc-current-label');
+    const mobileNextBtn = document.getElementById('mobile-toc-next-btn');
+    const mobileLinks = Array.from(document.querySelectorAll('.mobile-toc-item-link'));
+
+    let currentActiveIndex = 0;
+
+    function scrollToSection(targetId) {
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+
+      const isMobile = window.innerWidth <= 1024;
+      const headerEl = document.querySelector('.site-header');
+      const headerH = headerEl ? headerEl.offsetHeight : 64;
+      const topNoticeBar = document.querySelector('.top-notice-bar');
+      const noticeH = topNoticeBar ? topNoticeBar.offsetHeight : 0;
+      const remainingNotice = Math.max(0, noticeH - window.scrollY);
+      const mobileCardH = (mobileTocCard && isMobile) ? mobileTocCard.offsetHeight : 0;
+
+      const offset = isMobile 
+        ? (headerH + remainingNotice + mobileCardH + 16) 
+        : (headerH + 28);
+
+      const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = Math.max(0, elementPosition - offset);
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    function setActiveSection(idx) {
+      if (idx < 0 || idx >= legalCards.length) return;
+      currentActiveIndex = idx;
+
+      // Update Desktop Sidebar
+      desktopLinks.forEach((link, i) => {
+        if (i === idx) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Update Mobile Elements
+      mobileLinks.forEach((link, i) => {
+        if (i === idx) {
+          link.classList.add('is-active');
+          const label = link.getAttribute('data-label') || link.querySelector('.item-text')?.textContent || '';
+          if (mobileCurrentLabel && label) {
+            mobileCurrentLabel.textContent = label;
+          }
+        } else {
+          link.classList.remove('is-active');
+        }
+      });
+    }
+
+    // Desktop TOC Anchor Click
+    desktopLinks.forEach((link, idx) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').replace('#', '');
+        scrollToSection(targetId);
+        setActiveSection(idx);
+      });
+    });
+
+    // Mobile Menu Toggle
+    function openMobileMenu() {
+      if (!mobileTocCard) return;
+      mobileTocCard.classList.add('is-open');
+      if (mobileTrigger) mobileTrigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMobileMenu() {
+      if (!mobileTocCard) return;
+      mobileTocCard.classList.remove('is-open');
+      if (mobileTrigger) mobileTrigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileTocCard) return;
+      if (mobileTocCard.classList.contains('is-open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
+    if (mobileTrigger) {
+      mobileTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+    }
+
+    // Mobile Next Button Click
+    if (mobileNextBtn) {
+      mobileNextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextIndex = (currentActiveIndex + 1) % legalCards.length;
+        const targetCard = legalCards[nextIndex];
+        if (targetCard) {
+          scrollToSection(targetCard.id);
+          setActiveSection(nextIndex);
+        }
+      });
+    }
+
+    // Mobile Dropdown Item Click
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const idx = parseInt(link.getAttribute('data-index'), 10);
+        const targetId = link.getAttribute('href').replace('#', '');
+
+        closeMobileMenu();
+
+        // If not already active, navigate and set active
+        if (!link.classList.contains('is-active')) {
+          scrollToSection(targetId);
+          setActiveSection(idx);
+        }
+      });
+    });
+
+    // Close mobile dropdown when clicking header or outside
+    const mobileHeader = mobileTocCard ? mobileTocCard.querySelector('.mobile-toc-header') : null;
+    if (mobileHeader) {
+      mobileHeader.addEventListener('click', (e) => {
+        if (mobileTocCard && mobileTocCard.classList.contains('is-open')) {
+          e.stopPropagation();
+          closeMobileMenu();
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (mobileTocCard && mobileTocCard.classList.contains('is-open')) {
+        if (!mobileTocCard.contains(e.target)) {
+          closeMobileMenu();
+        }
+      }
+    });
+
+    // Real-Time ScrollSpy
+    let scrollSpyTicking = false;
+    function updateScrollSpy() {
+      const isMobile = window.innerWidth <= 1024;
+      const headerEl = document.querySelector('.site-header');
+      const headerH = headerEl ? headerEl.offsetHeight : 64;
+      const topNoticeBar = document.querySelector('.top-notice-bar');
+      const noticeH = topNoticeBar ? topNoticeBar.offsetHeight : 0;
+      const remainingNotice = Math.max(0, noticeH - window.scrollY);
+      const mobileCardH = (mobileTocCard && isMobile) ? mobileTocCard.offsetHeight : 0;
+
+      const probeY = window.scrollY + headerH + remainingNotice + mobileCardH + 100;
+
+      let activeIdx = 0;
+      for (let i = 0; i < legalCards.length; i++) {
+        const card = legalCards[i];
+        if (card.offsetTop <= probeY) {
+          activeIdx = i;
+        } else {
+          break;
+        }
+      }
+
+      if (activeIdx !== currentActiveIndex) {
+        setActiveSection(activeIdx);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollSpyTicking) {
+        window.requestAnimationFrame(() => {
+          updateScrollSpy();
+          scrollSpyTicking = false;
+        });
+        scrollSpyTicking = true;
+      }
+    }, { passive: true });
+
+    // Initial sync
+    updateScrollSpy();
+  }
+
+  initLegalNavigation();
   }
 
   if (document.readyState === 'loading') {
