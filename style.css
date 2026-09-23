@@ -1,8 +1,8 @@
 /* Custom Brand Font: Engravers Gothic BT */
 @font-face {
     font-family: 'Engravers Gothic BT';
-    src: url('../assets/fonts/ENGRAVERSGOTHIC%20BT.TTF') format('truetype'),
-        url('../assets/fonts/ENGRAVERSGOTHIC BT.TTF') format('truetype'),
+    src: url('assets/fonts/ENGRAVERSGOTHIC%20BT.TTF') format('truetype'),
+        url('assets/fonts/ENGRAVERSGOTHIC BT.TTF') format('truetype'),
         url('/assets/fonts/ENGRAVERSGOTHIC%20BT.TTF') format('truetype'),
         url('/assets/fonts/ENGRAVERSGOTHIC BT.TTF') format('truetype');
     font-weight: normal;
