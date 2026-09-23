@@ -26,543 +26,11 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
 
-    <style>
-        /* Custom Brand Font: Engravers Gothic BT */
-        @font-face {
-            font-family: 'Engravers Gothic BT';
-            src: url('../assets/fonts/ENGRAVERSGOTHIC%20BT.TTF') format('truetype'),
-                url('../assets/fonts/ENGRAVERSGOTHIC BT.TTF') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        .font-engravers {
-            font-family: 'Engravers Gothic BT', 'Space Grotesk', -apple-system, sans-serif;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        :root {
-            --color-canvas: #FAF8F5;
-            --accent-sage: #3F6F5E;
-            --accent-sage-dark: #204A3E;
-            --accent-sage-light: #A7B89F;
-            --accent-orange: #F27F0C;
-            --text-primary: #121F1B;
-            --text-secondary: #2C3E38;
-            --text-muted: #5D726A;
-        }
-
-        html {
-            background-color: var(--color-canvas);
-        }
-
-        @keyframes bodyFadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: transparent !important;
-            color: var(--text-primary);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            animation: bodyFadeIn 0.35s ease-out forwards;
-        }
-
-        /* Master Global Ambient 3D Light Fluid WebGL Canvas */
-        .global-canvas-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            background: transparent;
-        }
-
-        #ambient-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .global-canvas-overlay {
-            display: none;
-        }
-
-        /* Frameless Link Container */
-        .linktree-container {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 440px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Smooth Initial Load Stagger Fade-In Animations */
-        @keyframes staggerFadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(22px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes logoScaleFade {
-            0% {
-                opacity: 0;
-                transform: scale(0.75) translateY(-8px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* 1. Logo reveals first */
-        .logo-entry-wrap {
-            animation: logoScaleFade 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: 0.08s;
-        }
-
-        /* 2. Header text reveals next */
-        .header-stagger-1 {
-            animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: 0.22s;
-        }
-
-        .header-stagger-2 {
-            animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: 0.32s;
-        }
-
-        .header-stagger-3 {
-            animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: 0.40s;
-        }
-
-        /* 3. Buttons reveal one by one */
-        .link-entry-wrap {
-            width: 100%;
-            animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        .link-delay-1 {
-            animation-delay: 0.48s;
-        }
-
-        .link-delay-2 {
-            animation-delay: 0.56s;
-        }
-
-        .link-delay-3 {
-            animation-delay: 0.64s;
-        }
-
-        .link-delay-4 {
-            animation-delay: 0.72s;
-        }
-
-        .link-delay-5 {
-            animation-delay: 0.80s;
-        }
-
-        .link-delay-6 {
-            animation-delay: 0.88s;
-        }
-
-        .link-delay-7 {
-            animation-delay: 0.96s;
-        }
-
-        /* 4. Footer reveals last */
-        .footer-entry-wrap {
-            animation: staggerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-            animation-delay: 1.06s;
-        }
-
-        /* Circular Glassmorphism Pod behind Logo (White Transparent Frosted Glass) */
-        .logo-glass-pod {
-            width: 84px;
-            height: 84px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.85rem auto;
-            background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.50) 65%, rgba(240, 246, 243, 0.40) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1.5px solid rgba(255, 255, 255, 0.85);
-            box-shadow:
-                0 14px 34px -6px rgba(32, 74, 62, 0.16),
-                0 4px 14px 0 rgba(0, 0, 0, 0.04),
-                inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
-                inset 0 -2px 4px 0 rgba(32, 74, 62, 0.05);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            animation: floatLogo 5s ease-in-out infinite;
-        }
-
-        .logo-glass-pod:hover {
-            transform: translateY(-3px) scale(1.04);
-            background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.65) 65%, rgba(240, 246, 243, 0.50) 100%);
-            box-shadow:
-                0 18px 40px -6px rgba(32, 74, 62, 0.22),
-                0 6px 18px 0 rgba(0, 0, 0, 0.06),
-                inset 0 2px 5px 0 rgba(255, 255, 255, 1);
-            border-color: rgba(255, 255, 255, 0.95);
-        }
-
-        @keyframes floatLogo {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Ambient Floating Animation for Link Wrappers */
-        @keyframes floatBob1 {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes floatBob2 {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        @keyframes floatBob3 {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-4px);
-            }
-        }
-
-        .link-float-wrap {
-            width: 100%;
-            animation: floatBob1 4.2s ease-in-out infinite;
-            will-change: transform;
-        }
-
-        .link-float-wrap:nth-child(1) {
-            animation-name: floatBob1;
-            animation-duration: 4.2s;
-            animation-delay: 0s;
-        }
-
-        .link-float-wrap:nth-child(2) {
-            animation-name: floatBob2;
-            animation-duration: 3.8s;
-            animation-delay: 0.5s;
-        }
-
-        .link-float-wrap:nth-child(3) {
-            animation-name: floatBob3;
-            animation-duration: 4.4s;
-            animation-delay: 1.0s;
-        }
-
-        .link-float-wrap:nth-child(4) {
-            animation-name: floatBob1;
-            animation-duration: 3.9s;
-            animation-delay: 1.5s;
-        }
-
-        .link-float-wrap:nth-child(5) {
-            animation-name: floatBob2;
-            animation-duration: 4.3s;
-            animation-delay: 2.0s;
-        }
-
-        .link-float-wrap:nth-child(6) {
-            animation-name: floatBob3;
-            animation-duration: 4.1s;
-            animation-delay: 2.5s;
-        }
-
-        .link-float-wrap:nth-child(7) {
-            animation-name: floatBob1;
-            animation-duration: 4.2s;
-            animation-delay: 3.0s;
-        }
-
-        /* Pause float smoothly on hover so user can easily interact */
-        .link-float-wrap:hover {
-            animation-play-state: paused;
-        }
-
-        /* Glassmorphism Brand Buttons (Sage Green Gradient with Frosted Glass) */
-        .link-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0.88rem 1.4rem;
-            border-radius: 9999px;
-            background: linear-gradient(135deg, rgba(63, 111, 94, 0.85) 0%, rgba(32, 74, 62, 0.90) 100%);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: -0.01em;
-            border: 1.5px solid rgba(255, 255, 255, 0.38);
-            box-shadow:
-                0 10px 26px -5px rgba(32, 74, 62, 0.32),
-                0 4px 12px -2px rgba(0, 0, 0, 0.08),
-                inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
-                inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.12);
-            transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2),
-                box-shadow 0.28s ease,
-                background 0.28s ease,
-                border-color 0.28s ease;
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
-            will-change: transform;
-        }
-
-        /* Hover Interaction: Button shifts to the RIGHT for opening sensation */
-        .link-item:hover {
-            transform: translateX(12px);
-            background: linear-gradient(135deg, rgba(74, 130, 111, 0.92) 0%, rgba(26, 61, 51, 0.95) 100%);
-            border-color: rgba(255, 255, 255, 0.68);
-            box-shadow:
-                0 14px 32px -4px rgba(32, 74, 62, 0.42),
-                -6px 4px 16px -2px rgba(0, 0, 0, 0.12),
-                inset 0 2px 2px 0 rgba(255, 255, 255, 0.72);
-            color: #FFFFFF;
-        }
-
-        /* Click / Active Interaction: Button slides FURTHER RIGHT (22px) giving tactile "opening" feeling */
-        .link-item:active {
-            transform: translateX(22px) scale(0.985);
-            background: linear-gradient(135deg, rgba(82, 142, 122, 0.96) 0%, rgba(18, 48, 40, 0.98) 100%);
-            border-color: rgba(255, 255, 255, 0.85);
-            box-shadow:
-                0 8px 18px -4px rgba(32, 74, 62, 0.55),
-                -10px 4px 20px -2px rgba(0, 0, 0, 0.2),
-                inset 0 2px 3px 0 rgba(0, 0, 0, 0.25);
-            transition-duration: 0.1s;
-        }
-
-        /* Primary Highlight Glassmorphic Button (Official Website - Nova Orange) */
-        .link-item.link-primary {
-            background: linear-gradient(135deg, rgba(242, 127, 12, 0.88) 0%, rgba(216, 106, 0, 0.92) 100%);
-            border-color: rgba(255, 255, 255, 0.48);
-            box-shadow:
-                0 10px 26px -5px rgba(242, 127, 12, 0.38),
-                0 4px 12px -2px rgba(0, 0, 0, 0.08),
-                inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.65),
-                inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.12);
-        }
-
-        .link-item.link-primary:hover {
-            transform: translateX(12px);
-            background: linear-gradient(135deg, rgba(255, 140, 30, 0.94) 0%, rgba(196, 94, 0, 0.96) 100%);
-            border-color: rgba(255, 255, 255, 0.78);
-            box-shadow:
-                0 14px 32px -4px rgba(242, 127, 12, 0.52),
-                -6px 4px 16px -2px rgba(0, 0, 0, 0.12),
-                inset 0 2px 2px 0 rgba(255, 255, 255, 0.82);
-        }
-
-        .link-item.link-primary:active {
-            transform: translateX(22px) scale(0.985);
-            background: linear-gradient(135deg, rgba(255, 155, 45, 0.98) 0%, rgba(180, 80, 0, 1) 100%);
-            border-color: rgba(255, 255, 255, 0.92);
-            box-shadow:
-                0 8px 18px -4px rgba(242, 127, 12, 0.65),
-                -10px 4px 20px -2px rgba(0, 0, 0, 0.22),
-                inset 0 2px 3px 0 rgba(0, 0, 0, 0.25);
-            transition-duration: 0.1s;
-        }
-
-        .link-icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .link-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.15rem;
-            line-height: 1;
-            opacity: 0.85;
-            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2), opacity 0.25s ease;
-        }
-
-        .link-item:hover .link-arrow {
-            transform: translateX(5px) scale(1.18);
-            opacity: 1;
-        }
-
-        .link-item:active .link-arrow {
-            transform: translateX(10px) scale(1.28);
-            opacity: 1;
-        }
-
-        /* Animated Download Icon on Save Contact Button */
-        .link-download-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            opacity: 0.95;
-            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2), opacity 0.25s ease;
-        }
-
-        .download-arrow-anim {
-            display: inline-block;
-            animation: downloadPulse 1.6s ease-in-out infinite;
-            will-change: transform;
-        }
-
-        @keyframes downloadPulse {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(3.5px);
-            }
-        }
-
-        .link-item:hover .link-download-icon {
-            transform: translateX(5px) scale(1.18);
-            opacity: 1;
-        }
-
-        .link-item:hover .download-arrow-anim {
-            animation-duration: 0.8s;
-        }
-
-        .link-item:active .link-download-icon {
-            transform: translateX(10px) scale(1.28);
-            opacity: 1;
-        }
-
-        /* Animated Arrow on Official Website Button */
-        .link-arrow-website {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            color: #FFFFFF;
-            opacity: 0.95;
-            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2), opacity 0.25s ease;
-        }
-
-        .website-arrow-anim {
-            display: inline-block;
-            animation: arrowSlideRight 1.5s ease-in-out infinite;
-            will-change: transform;
-        }
-
-        @keyframes arrowSlideRight {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(4px);
-            }
-        }
-
-        .link-item:hover .link-arrow-website {
-            transform: translateX(5px) scale(1.18);
-            opacity: 1;
-        }
-
-        .link-item:hover .website-arrow-anim {
-            animation-duration: 0.75s;
-        }
-
-        .link-item:active .link-arrow-website {
-            transform: translateX(10px) scale(1.28);
-            opacity: 1;
-        }
-
-        /* Mobile adaptation */
-        @media (max-width: 480px) {
-            .link-item:hover {
-                transform: translateX(8px);
-            }
-
-            .link-item:active {
-                transform: translateX(14px) scale(0.985);
-            }
-
-            .link-item:hover .link-arrow,
-            .link-item:hover .link-download-icon,
-            .link-item:hover .link-arrow-website {
-                transform: translateX(4px);
-            }
-
-            .link-item:active .link-arrow,
-            .link-item:active .link-download-icon,
-            .link-item:active .link-arrow-website {
-                transform: translateX(7px);
-            }
-        }
-    </style>
+    <!-- Social Links Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="min-h-screen flex flex-col items-center justify-start p-4 sm:p-6 pt-6 pb-12">
+<body class="min-h-screen flex flex-col items-center justify-start px-4 py-4 sm:py-6">
 
     <!-- Master Ambient Generative 3D Light Fluid WebGL Canvas -->
     <div class="global-canvas-wrapper" aria-hidden="true">
@@ -574,7 +42,7 @@
     <div class="linktree-container">
 
         <!-- Header: Circular Glassmorphic Logo Pod and Brand Details -->
-        <header class="mb-5 flex flex-col items-center">
+        <header class="mb-4 sm:mb-5 flex flex-col items-center">
             <!-- Circular Glassmorphism Logo Pod for Enhanced Visibility (1. Logo Stagger) -->
             <div class="logo-entry-wrap">
                 <div class="logo-glass-pod">
@@ -601,7 +69,7 @@
         </header>
 
         <!-- Main Content: Anant Nova Brand Links with Floating Wrappers -->
-        <main class="space-y-3">
+        <main class="space-y-2.5 sm:space-y-3">
             <!-- 1. Official Website (Primary Highlight) -->
             <div class="link-entry-wrap link-delay-1">
                 <div class="link-float-wrap">
@@ -742,7 +210,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="mt-8 mb-6 footer-entry-wrap">
+        <footer class="mt-6 mb-4 footer-entry-wrap">
             <p class="font-engravers text-xs tracking-wider uppercase text-[#3F6F5E] font-semibold">Infinite
                 Possibilities. New Realities.</p>
             <p class="text-xs text-[#5D726A] mt-1 font-medium"> Navi Mumbai, Maharashtra, India </p>
@@ -754,12 +222,47 @@
     <!-- Master WebGL Background Shader -->
     <script src="../assets/js/hero-shader.js?v=4.0"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            window.scrollTo(0, 0);
+        // Bulletproof scroll-to-top on refresh / page load
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        function hardResetScroll() {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            if (document.documentElement) document.documentElement.scrollTop = 0;
+            if (document.body) document.body.scrollTop = 0;
+        }
+
+        hardResetScroll();
+
+        window.addEventListener('beforeunload', hardResetScroll);
+        window.addEventListener('pageshow', function () {
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            hardResetScroll();
         });
-        window.addEventListener('load', function () {
-            window.scrollTo(0, 0);
-        });
+        window.addEventListener('DOMContentLoaded', hardResetScroll);
+        window.addEventListener('load', hardResetScroll);
+
+        // Guard against asynchronous browser scroll restoration in initial load window
+        let userHasScrolled = false;
+        const interactionEvents = ['wheel', 'touchstart', 'touchmove', 'keydown', 'mousedown'];
+        function onUserInteraction() {
+            userHasScrolled = true;
+            interactionEvents.forEach(evt => window.removeEventListener(evt, onUserInteraction));
+        }
+        interactionEvents.forEach(evt => window.addEventListener(evt, onUserInteraction, { passive: true }));
+
+        const initialScrollLock = setInterval(function () {
+            if (!userHasScrolled) {
+                hardResetScroll();
+            }
+        }, 16);
+
+        setTimeout(function () {
+            clearInterval(initialScrollLock);
+        }, 650);
     </script>
 </body>
 
